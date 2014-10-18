@@ -93,4 +93,77 @@ public class Lanzamiento {
     public void setCompania(String nuevaCompania) {
         this.compania = nuevaCompania;
     }
+
+    /**
+     * Regresa el desarrollador del juego.
+     *
+     * @return La compañía que desarrolló el juego.
+     */
+    public String getDesarrollador() {
+        return this.desarrollador;
+    }
+
+    /**
+     * Actualiza el valor del desarrollador.
+     *
+     * @param nuevoDesarrollador - El nuevo valor para el desarrollador.
+     */
+    public void setDesarrollador(String nuevoDesarrollador) {
+        this.desarrollador = nuevoDesarrollador;
+    }
+
+    /**
+     * Regresa el año de lanzamiento del juego.
+     *
+     * @return El año de lanzamiento del juego.
+     */
+    public Integer getAnio() {
+        return this.anio;
+    }
+
+    /**
+     * Actualiza el valor del año de lanzamiento.
+     *
+     * @param nuevoAnio - El valor para el año de lanzamiento.
+     */
+    public void setAnio(Integer nuevoAnio) {
+        this.anio = nuevoAnio;
+    }
+
+    /**
+     * Regresa la clasificación del juego según la ESRB.
+     *
+     * @return La clasificación del juego según la ESRB.
+     */
+    public String getClasificacion() {
+        return this.clasificacion;
+    }
+
+    /**
+     * Actualiza el valor de la clasificación del juego.
+     *
+     * @param nueva - El nuevo valor para la clasificación del juego.
+     */
+    public void setClasificacion(String nueva) {
+        this.clasificacion = nueva;
+    }
+
+    /**
+     * Regresa la calificación del juego.
+     *
+     * @return La calificación del juego.
+     */
+    public Integer getCalificacion() {
+        return this.calificacion;
+    }
+
+    /**
+     * Actualiza el valor de la calificación del juego.
+     *
+     * @param nuevoScore - El nuevo valor para la calificación del juego.
+     */
+    public void setCalificacion(Integer nuevoScore) {
+        this.calificacion = nuevoScore;
+    }
+
 }

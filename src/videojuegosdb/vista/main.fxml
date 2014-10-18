@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="videojuegosdb.controlador.MainController">
+   <children>
+      <SplitPane dividerPositions="0.10033444816053512" layoutX="171.0" layoutY="36.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Button layoutX="389.0" layoutY="19.0" mnemonicParsing="false" text="Agregar Juego" />
+                  <Button layoutX="512.0" layoutY="19.0" mnemonicParsing="false" text="Agregar Consola" />
+                  <Button layoutX="649.0" layoutY="19.0" mnemonicParsing="false" text="Agregar Compañía" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.18090452261306533" layoutX="186.0" layoutY="138.0" prefHeight="534.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Hyperlink layoutX="7.0" layoutY="25.0" text="Videojuegos">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Hyperlink>
+                              <Hyperlink layoutX="7.0" layoutY="58.0" text="Consolas">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Hyperlink>
+                              <Hyperlink layoutX="7.0" layoutY="89.0" text="Compañias">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Hyperlink>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="532.0" prefWidth="658.0">
+                           <children>
+                              <SplitPane dividerPositions="0.08113207547169811" layoutX="214.0" layoutY="60.0" orientation="VERTICAL" prefHeight="532.0" prefWidth="648.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="52.0" prefWidth="646.0">
+                                       <children>
+                                          <Label layoutX="10.0" layoutY="7.0" text="Mejores Juegos:">
+                                             <font>
+                                                <Font name="Liberation Mono Bold" size="21.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="453.0" prefWidth="646.0">
+                                       <children>
+                                          <TableView layoutX="94.0" layoutY="50.0" prefHeight="483.0" prefWidth="646.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn prefWidth="232.0" text="Nombre" />
+                                              <TableColumn prefWidth="118.0" text="Consola" />
+                                                <TableColumn prefWidth="190.0" text="Compañía" />
+                                                <TableColumn prefWidth="105.0" text="Calificación" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
