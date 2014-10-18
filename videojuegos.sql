@@ -53,11 +53,36 @@ INSERT INTO consola (nombre, anio) VALUES
 INSERT INTO compania (nombre, anio_fundacion) VALUES
 ('Activision', 1979),
 ('Bungie', 1991),
+('Nintendo', 1889),
+('Game Freak', 1989),
+('Bethesda Softworks', 1986),
+('Tango Gameworks', 2010),
+('Bandai Namco Games', 2006),
+('Rockstar Games', 1998),
+('Rockstar North', 2002),
+('Bethesda Game Studios', 2001),
+('Riot Games', 2006),
+('TransGaming Inc.', 2001),
+('2K Games', 2005),
+('2K Australia', 2010), 
+('SCEA', 1993),
+('Microsoft Game Studios', 2002),
+('Microsoft', 1975),
+('Apple', 1976);
 
+INSERT INTO salio_para (id_juego, id_consola, id_compania, id_desarrollador, anio, clasificacion, calificacion) VALUES
+(1, 1, 1, 2, 2014, 'T', 76),  
+(1, 4, 1, 2, 2014, 'T', 77),  
+(2, 5, 3, 4, 2013, 'E', 87),
+(3, 1, 5, 6, 2014, 'M', 76),
+(3, 4, 5, 6, 2014, 'M', 83),
+(3, 6, 5, 6, 2014, 'M', 72);
 
-INSERT INTO compania(nombre) VALUES
-('Wrightchoice Software');
-
+INSERT INTO salio_para (id_juego, id_consola, id_compania, id_desarrollador, anio, clasificacion) VALUES
+(1, 2, 1, 2, 2014, 'T'),
+(1, 3, 1, 2, 2014, 'T'),
+(3, 2, 5, 6, 2014, 'M'), 
+(3, 3, 5, 6, 2014, 'M');
 
 .save videojuegos.db
 
