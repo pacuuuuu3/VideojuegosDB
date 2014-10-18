@@ -70,8 +70,7 @@ public class Compania {
     public static Integer getId(String nombre) {
         try {
             Integer id = null;
-            ResultSet rs = Updater.search("videojuegos.db",
-                    "SELECT id FROM compania WHERE "
+            ResultSet rs = Updater.search("SELECT id FROM compania WHERE "
                     + "nombre LIKE \"" + nombre + "\";");
             if (rs.next()) {
                 id = rs.getInt("id");
@@ -83,7 +82,30 @@ public class Compania {
         }
         return null;
     }
-    
-    
+
+    /**
+     * Regresa una entrada de la tabla como un objeto de tipo Compania.
+     * @param id - El id en la tabla de la entrada.
+     * @return La compañía con el id dado.
+     */
+    public static Compania getCompania(Integer id) {
+        try {
+            Compania c = null;
+            String nombre;
+            Integer anioFundacion;
+            ResultSet rs = Updater.search("SELECT * FROM compania WHERE "
+                    + "id = " + id + ";");
+            if (rs.next()) {
+                nombre = rs.getString("nombre");
+                anioFundacion = rs.getInt("anio_fundacion");
+                c = new Compania(nombre, anioFundacion);
+            }
+            return c;
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+        return null;
+    }
 
 }

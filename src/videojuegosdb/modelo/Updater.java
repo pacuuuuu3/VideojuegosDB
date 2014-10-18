@@ -16,13 +16,12 @@ public class Updater {
     /**
      * Ejecuta una consulta en la base de datos.
      *
-     * @param database - El nombre de la base de datos.
      * @param query - La consulta a realizar.
      * @return Un ResultSet con los resultados de la consulta.
      */
-    public static ResultSet search(String database, String query) {
+    public static ResultSet search(String query) {
         try {
-            initializeStatement(database);
+            initializeStatement();
             ResultSet regreso = stmt.executeQuery(query);
             return regreso;
         } catch (Exception e) {
@@ -35,12 +34,11 @@ public class Updater {
     /**
      * Actualiza la base de datos.
      *
-     * @param database - El nombre de la base de datos.
      * @param update - La actualización a realizar.
      */
-    public static void update(String database, String update) {
+    public static void update(String update) {
         try {
-            initializeStatement(database);
+            initializeStatement();
             stmt.executeUpdate(update);
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -49,10 +47,10 @@ public class Updater {
     }
 
     /* Inicializa el Statement de la clase. */
-    private static void initializeStatement(String database) {
+    private static void initializeStatement() {
         try {
             if (stmt == null) {
-                Connection c = Conexion.getConexion(database);
+                Connection c = Conexion.getConexion();
                 stmt = c.createStatement();
             }
         } catch (Exception e) {

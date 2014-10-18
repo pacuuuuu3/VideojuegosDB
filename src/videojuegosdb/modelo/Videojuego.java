@@ -49,8 +49,7 @@ public class Videojuego {
     public static String getNombre(Integer id) {
         try {
             String nombre = null;
-            ResultSet rs = Updater.search("videojuegos.db",
-                    "SELECT nombre FROM videojuego WHERE "
+            ResultSet rs = Updater.search("SELECT nombre FROM videojuego WHERE "
                     + "id = " + id + ";");
             if (rs.next()) {
                 nombre = rs.getString("nombre");
@@ -72,8 +71,7 @@ public class Videojuego {
     public static Integer getId(String nombre) {
         try {
             Integer id = null;
-            ResultSet rs = Updater.search("videojuegos.db",
-                    "SELECT id FROM videojuego WHERE "
+            ResultSet rs = Updater.search("SELECT id FROM videojuego WHERE "
                     + "nombre LIKE \"" + nombre + "\";");
             if (rs.next()) {
                 id = rs.getInt("id");
@@ -84,5 +82,21 @@ public class Videojuego {
             System.exit(0);
         }
         return null;
+    }
+
+    /**
+     * Agrega el juego a la base de datos.
+     */
+    public void agregaJuego() {
+        String agrega = "INSERT INTO videojuego (nombre) VALUES (\"" 
+                + this.nombre + "\");";
+        Updater.update(agrega);
+    }
+    
+    /**
+     * Elimina el juego de la base de datos.
+     */
+    public void remove(){
+    
     }
 }

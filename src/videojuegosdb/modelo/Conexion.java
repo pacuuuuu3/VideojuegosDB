@@ -13,18 +13,18 @@ import java.sql.DriverManager;
 public class Conexion {
 
     private static Connection c = null;
+    private static String nombreDB = "videojuegos.db";
 
     /**
      * Regresa la conexión a la base de datos.
      *
-     * @param base - El nombre de la base de datos.
      * @return La conexión a la base de datos.
      */
-    public static Connection getConexion(String base) {
+    public static Connection getConexion() {
         try {
             if (c == null) {
                 Class.forName("org.sqlite.JDBC");
-                c = DriverManager.getConnection("jdbc:sqlite:" + base);
+                c = DriverManager.getConnection("jdbc:sqlite:" + nombreDB);
                 c.setAutoCommit(true);
             }
             return c;
@@ -33,5 +33,14 @@ public class Conexion {
             System.exit(0);
         }
         return null;
+    }
+
+    /**
+     * Establece el nombre de la base de datos.
+     *
+     * @param nombre - El nombre de la base de datos.
+     */
+    public static void setNombreDB(String nombre) {
+        nombreDB = nombre;
     }
 }

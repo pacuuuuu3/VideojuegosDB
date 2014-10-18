@@ -20,8 +20,10 @@ public class TextConexion {
     @Test
     public void testGetConexion() {
         try {
-            Connection c = Conexion.getConexion("test.db");
+            Conexion.setNombreDB("test.db");
+            Connection c = Conexion.getConexion();
             Assert.assertTrue(c.isValid(0));
+            c.close();
         } catch (Exception e) {
            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);

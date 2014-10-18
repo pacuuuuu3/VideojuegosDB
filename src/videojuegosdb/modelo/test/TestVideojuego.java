@@ -17,7 +17,6 @@ public class TestVideojuego {
      */
     @Test
     public void testGetNombre(){
-        
     }
     
     /**
@@ -26,5 +25,13 @@ public class TestVideojuego {
     @Test
     public void testGetId(){
     
+    }
+    
+    /**
+     * Prueba unitaria para el método agregaJuego.
+     */
+    @Test
+    public void testAgregaJuego(){
+        
     }
 }
