@@ -57,12 +57,12 @@
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="453.0" prefWidth="646.0">
                                        <children>
-                                          <TableView layoutX="94.0" layoutY="50.0" prefHeight="483.0" prefWidth="646.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TableView fx:id="tabla_top" layoutX="94.0" layoutY="50.0" prefHeight="483.0" prefWidth="646.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                              <TableColumn prefWidth="232.0" text="Nombre" />
-                                              <TableColumn prefWidth="118.0" text="Consola" />
-                                                <TableColumn prefWidth="190.0" text="Compañía" />
-                                                <TableColumn prefWidth="105.0" text="Calificación" />
+                                              <TableColumn fx:id="columna_nombre" prefWidth="232.0" text="Nombre" />
+                                              <TableColumn fx:id="columna_consola" prefWidth="118.0" text="Consola" />
+                                                <TableColumn fx:id="columna_compania" prefWidth="190.0" text="Compañía" />
+                                                <TableColumn fx:id="columna_calificacion" prefWidth="105.0" text="Calificación" />
                                             </columns>
                                           </TableView>
                                        </children>

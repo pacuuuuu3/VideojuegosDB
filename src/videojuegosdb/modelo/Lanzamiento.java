@@ -1,6 +1,9 @@
 /* Clase para modelar los elementos de la tabla salio_para. */
 package videojuegosdb.modelo;
 
+import java.sql.ResultSet;
+import java.util.List;
+
 /**
  * Clase para modelar elementos de la tabla salio_para de la base de datos.
  *
@@ -164,6 +167,18 @@ public class Lanzamiento {
      */
     public void setCalificacion(Integer nuevoScore) {
         this.calificacion = nuevoScore;
+    }
+    
+    /**
+     * Regresa una lista de Lanzamientos construídos a partir de un ResultSet
+     * obtenido de una consulta de SQLite.
+     * @param resultados - Un ResultSet formado por lanzamientos.
+     * @return Una Lista con los lanzamientos del ResultSet.
+     */
+    public static List<Lanzamiento> returnLanzamientos(ResultSet resultados){
+        while(resultados.next()){
+        
+        }
     }
 
 }
