@@ -66,7 +66,7 @@ public class VideojuegosDBMain extends Application {
      */
     public void gotoMain() {
         try {
-            replaceSceneContent("main.fxml");
+            replaceSceneContent("/videojuegosdb/vista/main.fxml");
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);

@@ -2,6 +2,7 @@
 package videojuegosdb.controlador;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import videojuegosdb.modelo.Lanzamiento;
+import videojuegosdb.modelo.Updater;
 
 /**
  * Controlador para la ventana principal.
@@ -19,7 +21,7 @@ import videojuegosdb.modelo.Lanzamiento;
 public class MainController implements Initializable {
 
     @FXML
-    private TableView<String> tabla_top;
+    private TableView<Lanzamiento> tabla_top;
     @FXML
     private TableColumn<Lanzamiento, String> columna_nombre;
     @FXML
@@ -44,8 +46,14 @@ public class MainController implements Initializable {
         columna_consola.setCellValueFactory(new PropertyValueFactory<>("consola"));
         columna_compania.setCellValueFactory(new PropertyValueFactory<>("compania"));
         columna_calificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
+        tabla_top.getItems().addAll(Lanzamiento.getLanzamientos(getTop20()));
     }
     
-    
-
+    /* Regresa un ResultSet con los 20 (o menos) mejores videojuegos para ponerlos en la 
+    tabla principal. */
+    private ResultSet getTop20(){
+        ResultSet regreso = Updater.search("SELECT * FROM salio_para ORDER BY "
+                + "CALIFICACION DESC LIMIT 20;");
+        return regreso;
+    }
 }

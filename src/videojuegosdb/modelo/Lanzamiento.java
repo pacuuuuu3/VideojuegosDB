@@ -2,7 +2,7 @@
 package videojuegosdb.modelo;
 
 import java.sql.ResultSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Clase para modelar elementos de la tabla salio_para de la base de datos.
@@ -19,6 +19,12 @@ public class Lanzamiento {
     private Integer anio;
     private String clasificacion;
     private Integer calificacion;
+
+    /**
+     * Constructor vacío
+     */
+    public Lanzamiento() {
+    }
 
     /**
      * Constructor.
@@ -168,17 +174,67 @@ public class Lanzamiento {
     public void setCalificacion(Integer nuevoScore) {
         this.calificacion = nuevoScore;
     }
-    
+
     /**
      * Regresa una lista de Lanzamientos construídos a partir de un ResultSet
      * obtenido de una consulta de SQLite.
+     *
      * @param resultados - Un ResultSet formado por lanzamientos.
      * @return Una Lista con los lanzamientos del ResultSet.
      */
-    public static List<Lanzamiento> returnLanzamientos(ResultSet resultados){
-        while(resultados.next()){
-        
+    public static List<Lanzamiento> getLanzamientos(ResultSet resultados) {
+        try {
+            List<Lanzamiento> regreso = new LinkedList<>();
+            Lanzamiento current;
+            Integer comp, dev, calif;
+            List<Integer> idJuego, idConsola, idCompania, idDesarrollador,
+                    year, score;
+            idJuego = idConsola = idCompania = idDesarrollador = year = score
+                    = new LinkedList<>();
+            List<String> clasificacion = new LinkedList<>();
+            while (resultados.next()) {
+                idJuego.add(resultados.getInt("id_videojuego"));
+                idConsola.add(resultados.getInt("id_consola"));
+                idCompania.add(resultados.getInt("id_compania"));
+                idDesarrollador.add(resultados.getInt("id_desarrollador"));
+                year.add(resultados.getInt("anio"));
+                score.add(resultados.getInt("calificacion"));
+                clasificacion.add(resultados.getString("clasificacion"));
+            }
+            Iterator<Integer> itJuego, itConsola, itCompania, itDesarrollador,
+                    itYear, itScore;
+            itJuego = idJuego.iterator();
+            itConsola = idConsola.iterator();
+            itCompania = idCompania.iterator();
+            itDesarrollador = idDesarrollador.iterator();
+            itYear = year.iterator();
+            itScore = score.iterator();
+            for (String c : clasificacion) {
+                current = new Lanzamiento();
+                current.setVideojuego(Videojuego.getNombre(itJuego.next()));
+                current.setConsola(Consola.getConsola(itConsola.next()).getNombre());
+                comp = itCompania.next();
+                if (comp != 0) {
+                    current.setCompania(Compania.getCompania(comp).getNombre());
+                }
+                dev = itDesarrollador.next();
+                if (dev != 0) {
+                    current.setDesarrollador(Compania.getCompania(dev).getNombre());
+                }
+                current.setAnio(itYear.next());
+                calif = itScore.next();
+                if (calif != 0) {
+                    current.setCalificacion(calif);
+                }
+                current.setClasificacion(c);
+                regreso.add(current);
+            }
+            return regreso;
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
         }
+        return null;
     }
 
 }
