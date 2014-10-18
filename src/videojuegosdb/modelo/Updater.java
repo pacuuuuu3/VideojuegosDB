@@ -25,7 +25,8 @@ public class Updater {
             ResultSet regreso = stmt.executeQuery(query);
             return regreso;
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método Updater.search(String): " 
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return null;
@@ -41,7 +42,8 @@ public class Updater {
             initializeStatement();
             stmt.executeUpdate(update);
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método Updater.update(String): " 
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
     }
@@ -54,7 +56,9 @@ public class Updater {
                 stmt = c.createStatement();
             }
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método "
+                    + "Updater.initializeStatement(): " 
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
     }

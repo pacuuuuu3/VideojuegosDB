@@ -79,7 +79,8 @@ public class Compania {
             }
             return id;
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método Compania.getId(String): " 
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return null;
@@ -105,7 +106,9 @@ public class Compania {
             }
             return c;
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método "
+                    + "Compania.getCompania(Integer): "
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return null;

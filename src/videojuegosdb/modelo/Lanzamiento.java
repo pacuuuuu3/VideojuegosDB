@@ -237,7 +237,9 @@ public class Lanzamiento {
             }
             return regreso;
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método "
+                    + "Lanzamiento.getLanzamientos(ResultSet): " 
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return null;

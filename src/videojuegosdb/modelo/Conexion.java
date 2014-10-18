@@ -29,7 +29,8 @@ public class Conexion {
             }
             return c;
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método Conexion.getConexion(): " 
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return null;

@@ -56,7 +56,9 @@ public class Videojuego {
             }
             return nombre;
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Errror en el método "
+                    + "Videojuego.getNombre(Integer): "
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return null;
@@ -78,7 +80,8 @@ public class Videojuego {
             }
             return id;
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método Videojuego.getId(String): "
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return null;

@@ -77,7 +77,8 @@ public class Consola {
             }
             return id;
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método Consola.getId(String): " 
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return null;
@@ -103,7 +104,9 @@ public class Consola {
             }
             return c;
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método "
+                    + "Consola.getConsola(Integer): " 
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return null;

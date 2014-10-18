@@ -69,7 +69,9 @@ public class VideojuegosDBMain extends Application {
         try {
             replaceSceneContent("/videojuegosdb/vista/main.fxml");
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método "
+                    + "VideojuegosDBMain.gotoMain(): "
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
     }
@@ -82,9 +84,11 @@ public class VideojuegosDBMain extends Application {
     public void gotoLanzamiento(Lanzamiento l) {
         try {
             LanzamientoController.setLanzamiento(l);
-            replaceSceneContent("lanzamiento.fxml");
+            replaceSceneContent("/videojuegosdb/vista/lanzamiento.fxml");
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.err.println("Error en el método "
+                    + "VideojuegosDBMain.gotoLanzamiento(): " + 
+                    e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
     }
