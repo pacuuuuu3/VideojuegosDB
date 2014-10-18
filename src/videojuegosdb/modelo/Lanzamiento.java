@@ -2,7 +2,9 @@
 package videojuegosdb.modelo;
 
 import java.sql.ResultSet;
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Clase para modelar elementos de la tabla salio_para de la base de datos.
@@ -189,11 +191,15 @@ public class Lanzamiento {
             Integer comp, dev, calif;
             List<Integer> idJuego, idConsola, idCompania, idDesarrollador,
                     year, score;
-            idJuego = idConsola = idCompania = idDesarrollador = year = score
-                    = new LinkedList<>();
+            idJuego = new LinkedList<>();
+            idConsola = new LinkedList<>();
+            idCompania = new LinkedList<>();
+            idDesarrollador = new LinkedList<>();
+            year = new LinkedList<>();
+            score = new LinkedList<>();
             List<String> clasificacion = new LinkedList<>();
             while (resultados.next()) {
-                idJuego.add(resultados.getInt("id_videojuego"));
+                idJuego.add(resultados.getInt("id_juego"));
                 idConsola.add(resultados.getInt("id_consola"));
                 idCompania.add(resultados.getInt("id_compania"));
                 idDesarrollador.add(resultados.getInt("id_desarrollador"));

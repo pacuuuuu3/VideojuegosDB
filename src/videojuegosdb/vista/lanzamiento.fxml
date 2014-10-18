@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="videojuegosdb.controlador.LanzamientoController">
+   <children>
+      <Label fx:id="nombre" layoutX="60.0" layoutY="29.0" text="Nombre">
+         <font>
+            <Font name="Liberation Mono" size="55.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="110.0" text="Consola:">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="150.0" text="Compañia:">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="190.0" text="Desarrollador:">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="230.0" text="Año:">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="270.0" text="Calificación:">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="clasificacion" fitHeight="116.0" fitWidth="111.0" layoutX="60.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true" />
+      <Hyperlink fx:id="consola" layoutX="330.0" layoutY="110.0" text="Hyperlink">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="compania" layoutX="330.0" layoutY="150.0" text="Hyperlink">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="desarrollador" layoutX="330.0" layoutY="190.0" text="Hyperlink">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Hyperlink>
+      <Label fx:id="anio" layoutX="370.0" layoutY="229.0" text="Label">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="calificacion" layoutX="370.0" layoutY="271.0" text="Label">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

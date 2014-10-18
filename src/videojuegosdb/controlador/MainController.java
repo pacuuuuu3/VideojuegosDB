@@ -4,11 +4,15 @@ package videojuegosdb.controlador;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Callback;
 import videojuegosdb.modelo.Lanzamiento;
 import videojuegosdb.modelo.Updater;
 
@@ -42,18 +46,55 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        columna_nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        deployLanzamientoOnDoubleClick(columna_nombre);
+        columna_nombre.setCellValueFactory(new PropertyValueFactory<>("videojuego"));
         columna_consola.setCellValueFactory(new PropertyValueFactory<>("consola"));
         columna_compania.setCellValueFactory(new PropertyValueFactory<>("compania"));
         columna_calificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
         tabla_top.getItems().addAll(Lanzamiento.getLanzamientos(getTop20()));
     }
-    
+
     /* Regresa un ResultSet con los 20 (o menos) mejores videojuegos para ponerlos en la 
-    tabla principal. */
-    private ResultSet getTop20(){
+     tabla principal. */
+    private ResultSet getTop20() {
         ResultSet regreso = Updater.search("SELECT * FROM salio_para ORDER BY "
                 + "CALIFICACION DESC LIMIT 20;");
         return regreso;
+    }
+
+    /**
+     * Cambia la ventana de la interfaz a la de un lanzamiento al hacer doble
+     * click en la columna dada.
+     *
+     * @param nombre - El nombre de la columna a la cual ponerle la propiedad.
+     */
+    public void deployLanzamientoOnDoubleClick(TableColumn<Lanzamiento, String> nombre) {
+        nombre.setCellFactory(new Callback<TableColumn<Lanzamiento, String>, TableCell<Lanzamiento, String>>() {
+            @Override
+            public TableCell<Lanzamiento, String> call(TableColumn<Lanzamiento, String> col) {
+                final TableCell<Lanzamiento, String> cell = new TableCell<Lanzamiento, String>() {
+                    @Override
+                    public void updateItem(String videojuego, boolean empty
+                    ) {
+                        super.updateItem(videojuego, empty);
+                        if (empty) {
+                            setText(null);
+                        } else {
+                            setText(videojuego);
+                        }
+                    }
+                };
+                cell.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        if (event.getClickCount() > 1) {
+                            Lanzamiento l = (Lanzamiento) cell.getTableRow().getItem();
+                            VideojuegosDBMain.getInstance().gotoLanzamiento(l);
+                        }
+                    }
+                });
+                return cell;
+            }
+        });
     }
 }

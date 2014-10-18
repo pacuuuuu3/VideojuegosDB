@@ -88,15 +88,15 @@ public class Videojuego {
      * Agrega el juego a la base de datos.
      */
     public void agregaJuego() {
-        String agrega = "INSERT INTO videojuego (nombre) VALUES (\"" 
+        String agrega = "INSERT INTO videojuego (nombre) VALUES (\""
                 + this.nombre + "\");";
         Updater.update(agrega);
     }
-    
+
     /**
      * Elimina el juego de la base de datos.
      */
-    public void remove(){
-    
+    public void remove() {
+
     }
 }

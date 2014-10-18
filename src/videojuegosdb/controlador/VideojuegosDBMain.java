@@ -7,6 +7,7 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import videojuegosdb.modelo.Lanzamiento;
 
 /**
  * Clase principal de los controladores de la interfaz gráfica.
@@ -67,6 +68,21 @@ public class VideojuegosDBMain extends Application {
     public void gotoMain() {
         try {
             replaceSceneContent("/videojuegosdb/vista/main.fxml");
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+    }
+
+    /**
+     * Cambia la escena por la ventana del lanzamiento dado.
+     *
+     * @param l - El lanzamiento sobre el cual se mostrará la ventana.
+     */
+    public void gotoLanzamiento(Lanzamiento l) {
+        try {
+            LanzamientoController.setLanzamiento(l);
+            replaceSceneContent("lanzamiento.fxml");
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
