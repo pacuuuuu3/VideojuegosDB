@@ -12,7 +12,7 @@ anio               INTEGER NOT NULL
 CREATE TABLE compania(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 nombre             TEXT UNIQUE NOT NULL,
-anio_fundacion     INTEGER NOT NULL
+anio_fundacion     INTEGER 
 );
 
 CREATE TABLE salio_para(
@@ -49,6 +49,15 @@ INSERT INTO consola (nombre, anio) VALUES
 ('PC', 1982),
 ('Macintosh', 1984),
 ('Linux', 1991);
+
+INSERT INTO compania (nombre, anio_fundacion) VALUES
+('Activision', 1979),
+('Bungie', 1991),
+
+
+INSERT INTO compania(nombre) VALUES
+('Wrightchoice Software');
+
 
 .save videojuegos.db
 

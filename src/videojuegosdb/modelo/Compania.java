@@ -22,7 +22,9 @@ public class Compania {
      */
     public Compania(String nombre, Integer anio) {
         this.nombre = nombre;
-        this.anioFundacion = anio;
+        if (anio != 0) {
+            this.anioFundacion = anio;
+        }
     }
 
     /**
@@ -85,6 +87,7 @@ public class Compania {
 
     /**
      * Regresa una entrada de la tabla como un objeto de tipo Compania.
+     *
      * @param id - El id en la tabla de la entrada.
      * @return La compañía con el id dado.
      */
