@@ -3,6 +3,7 @@ package videojuegosdb.modelo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -148,6 +149,40 @@ public class Consola {
         Updater.update("DELETE FROM consola WHERE id = " + conId + ";");
         Updater.update("DELETE FROM publico_consola WHERE id_consola = "
                 + conId + ";");
+    }
+
+    /**
+     * Regresa una lista de Consolas construídas a partir de un ResultSet
+     * obtenido de una consulta de SQLite.
+     *
+     * @param resultados - Un ResultSet formado por consolas.
+     * @return Una Lista con las consolas del ResultSet.
+     */
+    public static List<Consola> getConsolas(ResultSet resultados, String tabla) {
+        try {
+            List<Consola> regreso = new LinkedList<>();
+            if (tabla.equals("publico_consola")) {
+                List<Integer> id = new LinkedList<>();
+                while (resultados.next()) {
+                    id.add(resultados.getInt("id_consola"));
+                }
+                for (Integer i : id) {
+                    regreso.add(Consola.getConsola(i));
+                }
+            } else if (tabla.equals("consola")) {
+                while (resultados.next()) {
+                    regreso.add(new Consola(resultados.getString("nombre"),
+                            resultados.getInt("anio")));
+                }
+            }
+            return regreso;
+        } catch (Exception e) {
+            System.err.println("Error en el método "
+                    + "Consola.getConsolas(ResultSet): "
+                    + e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+        return null;
     }
 
 }

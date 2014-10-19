@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
+import videojuegosdb.modelo.Compania;
 import videojuegosdb.modelo.Lanzamiento;
 import videojuegosdb.modelo.Updater;
 
@@ -55,6 +56,36 @@ public class MainController implements Initializable {
         tabla_top.getItems().addAll(Lanzamiento.getLanzamientos(getTop20()));
     }
 
+    /**
+     * Manejador para el Hyperlink de Juegos.
+     */
+    @FXML
+    protected void handleHyperlinkJuegos() {
+
+    }
+
+    /**
+     * Manejador para el Hyperlink de Consolas.
+     *
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * escena.
+     */
+    @FXML
+    protected void handleHyperlinkConsolas() throws IOException {
+        ConsolaTablaController.setTable("consola");
+        VideojuegosDBMain.getInstance().gotoConsolasTabla("SELECT * FROM "
+                + "consola;");
+    }
+
+    /**
+     * Manejador para el Hyperlink de Compañías.
+     */
+    @FXML
+    protected void handleHyperlinkCompanias() {
+
+    }
+
+
     /* Regresa un ResultSet con los 20 (o menos) mejores videojuegos para ponerlos en la 
      tabla principal. */
     private ResultSet getTop20() {
@@ -91,7 +122,9 @@ public class MainController implements Initializable {
                         if (event.getClickCount() > 1) {
                             try {
                                 Lanzamiento l = (Lanzamiento) cell.getTableRow().getItem();
-                                if(l == null) return;
+                                if (l == null) {
+                                    return;
+                                }
                                 VideojuegosDBMain.getInstance().gotoLanzamiento(l);
                             } catch (IOException e) {
                                 System.err.println("Error en el método "

@@ -28,19 +28,27 @@ public class TestConsola {
     public void testGetConsola() {
 
     }
-    
+
     /**
      * Prueba unitaria para el método getCompania.
      */
     @Test
-    public void testGetCompania(){
-    
+    public void testGetCompania() {
+
     }
-    
+
     /**
      * Prueba unitaria para el método remove.
      */
-    @Test public void testRemove(){
-        
+    @Test
+    public void testRemove() {
+
+    }
+
+    /**
+     * Prueba unitaria para el método getConsolas.
+     */
+    @Test
+    public void testGetConsolas() {
     }
 }

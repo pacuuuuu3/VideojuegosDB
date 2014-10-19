@@ -108,9 +108,18 @@ public class CompaniaController implements Initializable {
                 + "salio_para WHERE id_compania = " + id + ";");
     }
 
+    /**
+     * Manejador para el botón de consolas.
+     *
+     * @throws java.io.IOException Si ocurre un error al tratar de cambiar la
+     * escena.
+     */
     @FXML
-    protected void handleBotonConsolas() {
-
+    protected void handleBotonConsolas() throws IOException {
+        Integer id = Compania.getId(actual.getNombre());
+        ConsolaTablaController.setTable("publico_consola");
+        VideojuegosDBMain.getInstance().gotoConsolasTabla("SELECT * FROM "
+                + "publico_consola WHERE id_compania = " + id + ";");
     }
 
 }

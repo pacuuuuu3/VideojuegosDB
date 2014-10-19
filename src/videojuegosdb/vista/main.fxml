@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="videojuegosdb.controlador.MainController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="videojuegosdb.controlador.MainController">
    <children>
       <SplitPane dividerPositions="0.10033444816053512" layoutX="171.0" layoutY="36.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -25,17 +24,17 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Hyperlink layoutX="7.0" layoutY="25.0" text="Videojuegos">
+                              <Hyperlink layoutX="7.0" layoutY="25.0" onAction="#handleHyperlinkJuegos" text="Videojuegos">
                                  <font>
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Hyperlink>
-                              <Hyperlink layoutX="7.0" layoutY="58.0" text="Consolas">
+                              <Hyperlink layoutX="7.0" layoutY="58.0" onAction="#handleHyperlinkConsolas" text="Consolas">
                                  <font>
                                     <Font name="System Bold" size="17.0" />
                                  </font>
                               </Hyperlink>
-                              <Hyperlink layoutX="7.0" layoutY="89.0" text="Compañias">
+                              <Hyperlink layoutX="7.0" layoutY="89.0" onAction="#handleHyperlinkCompanias" text="Compañias">
                                  <font>
                                     <Font name="System Bold" size="17.0" />
                                  </font>

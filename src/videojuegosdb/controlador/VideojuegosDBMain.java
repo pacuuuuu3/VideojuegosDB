@@ -143,6 +143,18 @@ public class VideojuegosDBMain extends Application {
     }
 
     /**
+     * Cambia la pantalla a la de resultados de consolas.
+     *
+     * @param query - La consulta con los resultados a mostrarse en la tabla.
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * escena.
+     */
+    public void gotoConsolasTabla(String query) throws IOException {
+        ConsolaTablaController.setConsolas(query);
+        replaceSceneContent("consola_tabla.fxml");
+    }
+
+    /**
      * Muestra una escena para eliminar elementos de la base de datos.
      *
      * @param nombre - El nombre de la entrada a eliminar.
