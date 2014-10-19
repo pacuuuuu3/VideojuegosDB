@@ -144,7 +144,7 @@ public class LanzamientoController implements Initializable {
      *
      * @return El lanzamiento actual.
      */
-    public Lanzamiento getLanzamiento() {
+    public static Lanzamiento getLanzamiento() {
         return actual;
     }
 

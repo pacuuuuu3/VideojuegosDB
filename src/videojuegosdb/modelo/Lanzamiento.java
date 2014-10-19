@@ -2,6 +2,7 @@
 package videojuegosdb.modelo;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public class Lanzamiento {
 
+    private Integer rowid;
     private String videojuego;
     private String consola;
     private String compania;
@@ -31,6 +33,7 @@ public class Lanzamiento {
     /**
      * Constructor.
      *
+     * @param rowid - El id en la tabla del lanzamiento.
      * @param videojuego - El nombre del videojuego
      * @param consola - La consola para la que salió el videojuego.
      * @param compania - La compañía que publicó el videojuego.
@@ -39,9 +42,10 @@ public class Lanzamiento {
      * @param clasificacion - La clasificación del videojuego según la ESRB.
      * @param calificacion - La calificación del videojuego.
      */
-    public Lanzamiento(String videojuego, String consola, String compania,
+    public Lanzamiento(Integer rowid, String videojuego, String consola, String compania,
             String desarrollador, Integer anio, String clasificacion,
             Integer calificacion) {
+        this.rowid = rowid;
         this.videojuego = videojuego;
         this.consola = consola;
         this.compania = compania;
@@ -49,6 +53,22 @@ public class Lanzamiento {
         this.anio = anio;
         this.clasificacion = clasificacion;
         this.calificacion = calificacion;
+    }
+    
+    /**
+     * Regresa el id en la tabla del Lanzamiento.
+     * @return El id del lanzamiento.
+     */
+    public Integer getRowid(){
+        return this.rowid;
+    }
+    
+    /**
+     * Actualiza el valor del id en la tabla del Lanzamiento.
+     * @param rowid - El nuevo valor del id.
+     */
+    public void setRowid(Integer rowid){
+        this.rowid = rowid;
     }
 
     /**
@@ -189,8 +209,9 @@ public class Lanzamiento {
             List<Lanzamiento> regreso = new LinkedList<>();
             Lanzamiento current;
             Integer comp, dev, calif;
-            List<Integer> idJuego, idConsola, idCompania, idDesarrollador,
+            List<Integer> row, idJuego, idConsola, idCompania, idDesarrollador,
                     year, score;
+            row = new LinkedList<>();
             idJuego = new LinkedList<>();
             idConsola = new LinkedList<>();
             idCompania = new LinkedList<>();
@@ -199,6 +220,7 @@ public class Lanzamiento {
             score = new LinkedList<>();
             List<String> clasificacion = new LinkedList<>();
             while (resultados.next()) {
+                row.add(resultados.getInt("rowid"));
                 idJuego.add(resultados.getInt("id_juego"));
                 idConsola.add(resultados.getInt("id_consola"));
                 idCompania.add(resultados.getInt("id_compania"));
@@ -207,8 +229,9 @@ public class Lanzamiento {
                 score.add(resultados.getInt("calificacion"));
                 clasificacion.add(resultados.getString("clasificacion"));
             }
-            Iterator<Integer> itJuego, itConsola, itCompania, itDesarrollador,
+            Iterator<Integer> itRow, itJuego, itConsola, itCompania, itDesarrollador,
                     itYear, itScore;
+            itRow = row.iterator();
             itJuego = idJuego.iterator();
             itConsola = idConsola.iterator();
             itCompania = idCompania.iterator();
@@ -217,6 +240,7 @@ public class Lanzamiento {
             itScore = score.iterator();
             for (String c : clasificacion) {
                 current = new Lanzamiento();
+                current.setRowid(itRow.next());
                 current.setVideojuego(Videojuego.getNombre(itJuego.next()));
                 current.setConsola(Consola.getConsola(itConsola.next()).getNombre());
                 comp = itCompania.next();
@@ -238,11 +262,25 @@ public class Lanzamiento {
             return regreso;
         } catch (Exception e) {
             System.err.println("Error en el método "
-                    + "Lanzamiento.getLanzamientos(ResultSet): " 
+                    + "Lanzamiento.getLanzamientos(ResultSet): "
                     + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         return null;
+    }
+
+    /**
+     * Elimina el lanzamiento de la base de datos.
+     * @throws java.sql.SQLException Si falla la conexión a la base de datos.
+     */
+    public void remove() throws SQLException {
+        Integer idJuego = Videojuego.getId(videojuego);
+        Updater.update("DELETE FROM salio_para WHERE rowid = " + rowid + ";");
+        ResultSet cuantosHay = Updater.search("SELECT * FROM salio_para WHERE "
+                + "id_juego = " + idJuego + ";");
+        if(cuantosHay.next())
+            return;
+        Updater.update("DELETE FROM videojuego WHERE id = " + idJuego + ";");
     }
 
 }

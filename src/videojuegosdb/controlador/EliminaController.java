@@ -1,11 +1,17 @@
 /* Controlador para la ventana de eliminar. */
 package videojuegosdb.controlador;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 /**
  * Controlador para la ventana de eliminar.
@@ -16,7 +22,7 @@ import javafx.scene.control.Label;
 public class EliminaController implements Initializable {
 
     @FXML
-    private Label name;
+    private Label seguro;
 
     private static String nombre;
     private static String clase;
@@ -33,7 +39,7 @@ public class EliminaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        name.setText(nombre);
+        seguro.setText("¿Seguro que deasea eliminar " + nombre + "?");
     }
 
     /**
@@ -46,24 +52,34 @@ public class EliminaController implements Initializable {
     }
 
     /* Elimina el objeto a eliminar. */
-    private void remove() {
+    private void remove() throws SQLException {
         switch (clase) {
             case "Lanzamiento":
                 LanzamientoController.getLanzamiento().remove();
                 break;
-            case "Compania":
+            /*case "Compania":
                 CompaniaController.getCompania().remove();
                 break;
             case "Consola":
-                ConsolaController.getConsola().remove();
+                ConsolaController.getConsola().remove();*/
         }
     }
-    
+
     /**
      * Manejador para el botón Sí.
+     * 
+     * @throws java.io.IOException Si no se encuentra exito.fxml.
+     * @throws java.sql.SQLException Si falla la conexión a la base de datos.
      */
-    protected void handleBotonSi(){
-       remove();
+    @FXML
+    protected void handleBotonSi() throws IOException, SQLException {
+            remove();
+            VideojuegosDBMain.getInstance().gotoMain();
+            Stage actual = (Stage) seguro.getScene().getWindow();
+            Parent root = FXMLLoader.load(EliminaController.class.getResource("/videojuegosdb/vista/exito.fxml"));
+            actual.setScene(new Scene(root, 500, 230));
+            actual.setTitle("Éxito");
+            actual.show();
     }
 
     /**

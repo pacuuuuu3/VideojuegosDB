@@ -22,6 +22,7 @@ public class VideojuegosDBMain extends Application {
 
     private static VideojuegosDBMain instance;
     private static String previousSceneName;
+    private static String currentSceneName = null;
 
     /**
      * Constructor vacío. Establece la instancia de la clase como el objeto
@@ -121,6 +122,7 @@ public class VideojuegosDBMain extends Application {
             EliminaController.setClase(clase);
             Parent root = FXMLLoader.load(VideojuegosDBMain.class.getResource("/videojuegosdb/vista/elimina.fxml"));
             Stage teatro = new Stage();
+            teatro.setTitle("Eliminar");
             teatro.setScene(new Scene(root, 500, 230));
             teatro.show();
         } catch (Exception e) {
@@ -133,7 +135,8 @@ public class VideojuegosDBMain extends Application {
 
     /* Cambia el contenido de la escena por el del fxml dado. */
     private Parent replaceSceneContent(String fxml) throws IOException {
-        previousSceneName = fxml;
+        previousSceneName = currentSceneName;
+        currentSceneName = fxml;
         Parent page = (Parent) FXMLLoader.load(VideojuegosDBMain.class.getResource("/videojuegosdb/vista/"
                 + fxml),
                 null, new JavaFXBuilderFactory());

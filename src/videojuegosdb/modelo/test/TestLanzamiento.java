@@ -20,5 +20,13 @@ public class TestLanzamiento {
     public void testGetLanzamientos(){
     
     }
+    
+    /**
+     * Prueba unitaria para el método remove.
+     */
+    @Test
+    public void testRemove(){
+    
+    }
 
 }
