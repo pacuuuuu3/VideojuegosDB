@@ -45,7 +45,7 @@ public class MainController implements Initializable {
      * the root object was not localized.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb){
         deployLanzamientoOnDoubleClick(columna_nombre);
         columna_nombre.setCellValueFactory(new PropertyValueFactory<>("videojuego"));
         columna_consola.setCellValueFactory(new PropertyValueFactory<>("consola"));
@@ -68,7 +68,7 @@ public class MainController implements Initializable {
      *
      * @param nombre - El nombre de la columna a la cual ponerle la propiedad.
      */
-    public void deployLanzamientoOnDoubleClick(TableColumn<Lanzamiento, String> nombre) {
+    public void deployLanzamientoOnDoubleClick(TableColumn<Lanzamiento, String> nombre){
         nombre.setCellFactory(new Callback<TableColumn<Lanzamiento, String>, TableCell<Lanzamiento, String>>() {
             @Override
             public TableCell<Lanzamiento, String> call(TableColumn<Lanzamiento, String> col) {

@@ -21,19 +21,19 @@ import videojuegosdb.modelo.Lanzamiento;
 public class LanzamientoController implements Initializable {
 
     @FXML
-    private static Label nombre;
+    private Label nombre;
     @FXML
-    private static ImageView clasificacion;
+    private ImageView clasificacion;
     @FXML
-    private static Hyperlink consola;
+    private Hyperlink consola;
     @FXML
-    private static Hyperlink compania;
+    private Hyperlink compania;
     @FXML
-    private static Hyperlink desarrollador;
+    private Hyperlink desarrollador;
     @FXML
-    private static Label anio;
+    private Label anio;
     @FXML
-    private static Label calificacion;
+    private Label calificacion;
 
     private static Lanzamiento actual = null;
 
@@ -53,14 +53,16 @@ public class LanzamientoController implements Initializable {
         nombre.setText(actual.getVideojuego());
         consola.setText(actual.getConsola());
         String comp, dev;
-        if(((comp = actual.getCompania()) == null) || comp.isEmpty())
+        if (((comp = actual.getCompania()) == null) || comp.isEmpty()) {
             compania.setVisible(false);
-        else
+        } else {
             compania.setText(comp);
-        if(((dev = actual.getCompania()) == null) || dev.isEmpty())
+        }
+        if (((dev = actual.getCompania()) == null) || dev.isEmpty()) {
             desarrollador.setVisible(false);
-        else
+        } else {
             desarrollador.setText(dev);
+        }
         anio.setText(actual.getAnio().toString());
     }
 
@@ -68,28 +70,28 @@ public class LanzamientoController implements Initializable {
     private void setClasificacion() {
         switch (actual.getClasificacion()) {
             case "E":
-                clasificacion.setImage(new Image("/clasificaciones/everyone.png"));
+                clasificacion.setImage(new Image(LanzamientoController.class.getResourceAsStream("clasificaciones/everyone.png")));
                 break;
             case "E10+":
-                clasificacion.setImage(new Image("/clasificaciones/everyone10.png"));
+                clasificacion.setImage(new Image(LanzamientoController.class.getResourceAsStream("clasificaciones/everyone10.png")));
                 break;
             case "T":
-                clasificacion.setImage(new Image("/clasificaciones/teen.png"));
+                clasificacion.setImage(new Image(LanzamientoController.class.getResourceAsStream("clasificaciones/teen.png")));
                 break;
             case "M":
-                clasificacion.setImage(new Image("/clasificaciones/mature.png"));
+                clasificacion.setImage(new Image(LanzamientoController.class.getResourceAsStream("clasificaciones/mature.png")));
                 break;
             case "AO":
-                clasificacion.setImage(new Image("/clasificaciones/adults_only.png"));
+                clasificacion.setImage(new Image(LanzamientoController.class.getResourceAsStream("clasificaciones/adults_only.png")));
                 break;
             case "EC":
-                clasificacion.setImage(new Image("/clasificaciones/early_childhood.png"));
+                clasificacion.setImage(new Image(LanzamientoController.class.getResourceAsStream("clasificaciones/early_childhood.png")));
                 break;
             case "RP":
-                clasificacion.setImage(new Image("/clasificaciones/rating_pending.png"));
+                clasificacion.setImage(new Image(LanzamientoController.class.getResourceAsStream("clasificaciones/rating_pending.png")));
                 break;
             case "K-A":
-                clasificacion.setImage(new Image("/clasificaciones/kids_to_adults.png"));
+                clasificacion.setImage(new Image(LanzamientoController.class.getResourceAsStream("clasificaciones/kids_to_adults.png")));
                 break;
         }
     }
@@ -99,16 +101,33 @@ public class LanzamientoController implements Initializable {
         Integer c = actual.getCalificacion();
         if (c == null) {
             calificacion.setVisible(false);
-            return;
-        }
-        calificacion.setText(c.toString());
-        if (c <= 49) {
-            calificacion.setTextFill(Color.web("#FC2609"));
-        } else if (c <= 74) {
-            calificacion.setTextFill(Color.web("#FEE506"));
         } else {
-            calificacion.setTextFill(Color.web("#3CFE06"));
+            calificacion.setText(c.toString());
+            if (c <= 49) {
+                calificacion.setTextFill(Color.web("#FC2609"));
+            } else if (c <= 74) {
+                calificacion.setTextFill(Color.web("#FEE506"));
+            } else {
+                calificacion.setTextFill(Color.web("#3CFE06"));
+            }
         }
+    }
+
+    /**
+     * Manejador para el botón de regresar.
+     */
+    @FXML
+    protected void handleBotonRegresa() {
+        VideojuegosDBMain.getInstance().gotoPreviousScene();
+    }
+
+    /**
+     * Manejador para el botón de eliminar.
+     */
+    @FXML
+    protected void handleBotonElimina() {
+        VideojuegosDBMain.getInstance().showEliminaScene(actual.getVideojuego(),
+                "Lanzamiento");
     }
 
     /**
@@ -118,6 +137,15 @@ public class LanzamientoController implements Initializable {
      */
     public static void setLanzamiento(Lanzamiento nuevo) {
         actual = nuevo;
+    }
+
+    /**
+     * Regresa el Lanzamiento actual.
+     *
+     * @return El lanzamiento actual.
+     */
+    public Lanzamiento getLanzamiento() {
+        return actual;
     }
 
 }

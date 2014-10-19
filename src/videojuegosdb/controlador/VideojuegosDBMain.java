@@ -1,6 +1,7 @@
 /* Clase principal de los controladores de la interfaz gráfica. */
 package videojuegosdb.controlador;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
@@ -20,6 +21,7 @@ public class VideojuegosDBMain extends Application {
     private Stage stage;
 
     private static VideojuegosDBMain instance;
+    private static String previousSceneName;
 
     /**
      * Constructor vacío. Establece la instancia de la clase como el objeto
@@ -67,7 +69,7 @@ public class VideojuegosDBMain extends Application {
      */
     public void gotoMain() {
         try {
-            replaceSceneContent("/videojuegosdb/vista/main.fxml");
+            replaceSceneContent("main.fxml");
         } catch (Exception e) {
             System.err.println("Error en el método "
                     + "VideojuegosDBMain.gotoMain(): "
@@ -84,18 +86,56 @@ public class VideojuegosDBMain extends Application {
     public void gotoLanzamiento(Lanzamiento l) {
         try {
             LanzamientoController.setLanzamiento(l);
-            replaceSceneContent("/videojuegosdb/vista/lanzamiento.fxml");
+            replaceSceneContent("lanzamiento.fxml");
         } catch (Exception e) {
             System.err.println("Error en el método "
-                    + "VideojuegosDBMain.gotoLanzamiento(): " + 
-                    e.getClass().getName() + ": " + e.getMessage());
+                    + "VideojuegosDBMain.gotoLanzamiento(): "
+                    + e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+    }
+
+    /**
+     * Vuelve a la última escena visitada.
+     */
+    public void gotoPreviousScene() {
+        try {
+            replaceSceneContent(previousSceneName);
+        } catch (Exception e) {
+            System.err.println("Error en el método "
+                    + "VideojuegosDBMain.gotoPreviousScene(): "
+                    + e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+    }
+
+    /**
+     * Muestra una escena para eliminar elementos de la base de datos.
+     *
+     * @param nombre - El nombre de la entrada a eliminar.
+     * @param clase - La clase de la entrada a eliminar.
+     */
+    public void showEliminaScene(String nombre, String clase) {
+        try {
+            EliminaController.setNombre(nombre);
+            EliminaController.setClase(clase);
+            Parent root = FXMLLoader.load(VideojuegosDBMain.class.getResource("/videojuegosdb/vista/elimina.fxml"));
+            Stage teatro = new Stage();
+            teatro.setScene(new Scene(root, 500, 230));
+            teatro.show();
+        } catch (Exception e) {
+            System.err.println("Error en el método "
+                    + "VideojuegosDBMain.showEliminaScene(String, String): "
+                    + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
     }
 
     /* Cambia el contenido de la escena por el del fxml dado. */
-    private Parent replaceSceneContent(String fxml) throws Exception {
-        Parent page = (Parent) FXMLLoader.load(VideojuegosDBMain.class.getResource(fxml),
+    private Parent replaceSceneContent(String fxml) throws IOException {
+        previousSceneName = fxml;
+        Parent page = (Parent) FXMLLoader.load(VideojuegosDBMain.class.getResource("/videojuegosdb/vista/"
+                + fxml),
                 null, new JavaFXBuilderFactory());
         Scene scene = stage.getScene();
         if (scene == null) {
