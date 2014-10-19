@@ -2,6 +2,7 @@
 package videojuegosdb.controlador;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
@@ -22,10 +23,9 @@ public class VideojuegosDBMain extends Application {
 
     private Stage stage;
 
-    private static boolean deRegreso = false;
     private static VideojuegosDBMain instance;
     private static String previousSceneName;
-    private static String currentSceneName = null;
+    private static String escenaActual = null;
 
     /**
      * Constructor vacío. Establece la instancia de la clase como el objeto
@@ -121,7 +121,6 @@ public class VideojuegosDBMain extends Application {
      */
     public void gotoPreviousScene() {
         try {
-            deRegreso = true;
             replaceSceneContent(previousSceneName);
         } catch (Exception e) {
             System.err.println("Error en el método "
@@ -129,6 +128,18 @@ public class VideojuegosDBMain extends Application {
                     + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
+    }
+
+    /**
+     * Cambia la pantalla a la de resultados de lanzamientos.
+     *
+     * @param query - La consulta con los resultados a mostrarse en la tabla.
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * escena.
+     */
+    public void gotoLanzamientoTabla(String query) throws IOException {
+        LanzamientoTablaController.setLanzamientos(query);
+        replaceSceneContent("lanzamiento_tabla.fxml");
     }
 
     /**
@@ -156,8 +167,8 @@ public class VideojuegosDBMain extends Application {
 
     /* Cambia el contenido de la escena por el del fxml dado. */
     private Parent replaceSceneContent(String fxml) throws IOException {
-        previousSceneName = currentSceneName;
-        currentSceneName = fxml;
+        previousSceneName = escenaActual;
+        escenaActual = fxml;
         Parent page = (Parent) FXMLLoader.load(VideojuegosDBMain.class.getResource("/videojuegosdb/vista/"
                 + fxml),
                 null, new JavaFXBuilderFactory());
@@ -171,5 +182,4 @@ public class VideojuegosDBMain extends Application {
         stage.sizeToScene();
         return page;
     }
-
 }

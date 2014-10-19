@@ -58,28 +58,37 @@ public class EliminaController implements Initializable {
                 LanzamientoController.getLanzamiento().remove();
                 break;
             /*case "Compania":
-                CompaniaController.getCompania().remove();
-                break;
-            case "Consola":
-                ConsolaController.getConsola().remove();*/
+             CompaniaController.getCompania().remove();
+             break;*/
+             case "Consola":
+             ConsolaController.getConsola().remove();
         }
     }
 
     /**
      * Manejador para el botón Sí.
-     * 
+     *
      * @throws java.io.IOException Si no se encuentra exito.fxml.
      * @throws java.sql.SQLException Si falla la conexión a la base de datos.
      */
     @FXML
     protected void handleBotonSi() throws IOException, SQLException {
-            remove();
-            VideojuegosDBMain.getInstance().gotoMain();
-            Stage actual = (Stage) seguro.getScene().getWindow();
-            Parent root = FXMLLoader.load(EliminaController.class.getResource("/videojuegosdb/vista/exito.fxml"));
-            actual.setScene(new Scene(root, 500, 230));
-            actual.setTitle("Éxito");
-            actual.show();
+        remove();
+        VideojuegosDBMain.getInstance().gotoMain();
+        Stage actual = (Stage) seguro.getScene().getWindow();
+        Parent root = FXMLLoader.load(EliminaController.class.getResource("/videojuegosdb/vista/exito.fxml"));
+        actual.setScene(new Scene(root, 500, 230));
+        actual.setTitle("Éxito");
+        actual.show();
+    }
+
+    /**
+     * Manejador para el botón No.
+     */
+    @FXML
+    protected void handleBotonNo() {
+        Stage actual = (Stage) seguro.getScene().getWindow();
+        actual.close();
     }
 
     /**

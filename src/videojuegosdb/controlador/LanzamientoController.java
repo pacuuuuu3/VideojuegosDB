@@ -166,16 +166,28 @@ public class LanzamientoController implements Initializable {
         VideojuegosDBMain.getInstance().gotoConsola(con);
     }
 
+    /**
+     * Manejador para el Hyperlink de Compañía.
+     *
+     * @throws java.io.IOException Si ocurre un error al cambiar la escena.
+     */
     @FXML
-    protected void handleHyperlinkCompania() {
+    protected void handleHyperlinkCompania() throws IOException {
         Integer idCompania = Compania.getId(actual.getCompania());
         Compania com = Compania.getCompania(idCompania);
         VideojuegosDBMain.getInstance().gotoCompania(com);
     }
 
+    /**
+     * Manejador para el Hyperlink de Desarrollador.
+     *
+     * @throws java.io.IOException Si ocurre un error al cambiar de escena.
+     */
     @FXML
-    protected void handleHyperlinkDesarrollador() {
-
+    protected void handleHyperlinkDesarrollador() throws IOException {
+        Integer id = Compania.getId(actual.getDesarrollador());
+        Compania dev = Compania.getCompania(id);
+        VideojuegosDBMain.getInstance().gotoCompania(dev);
     }
 
     /**

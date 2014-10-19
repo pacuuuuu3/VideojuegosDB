@@ -69,7 +69,7 @@ public class MainController implements Initializable {
      *
      * @param nombre - El nombre de la columna a la cual ponerle la propiedad.
      */
-    public void deployLanzamientoOnDoubleClick(TableColumn<Lanzamiento, String> nombre) {
+    public static void deployLanzamientoOnDoubleClick(TableColumn<Lanzamiento, String> nombre) {
         nombre.setCellFactory(new Callback<TableColumn<Lanzamiento, String>, TableCell<Lanzamiento, String>>() {
             @Override
             public TableCell<Lanzamiento, String> call(TableColumn<Lanzamiento, String> col) {

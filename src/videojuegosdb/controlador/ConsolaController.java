@@ -1,7 +1,9 @@
 /* Controlador para interfaz de Consolas. */
 package videojuegosdb.controlador;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -9,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import videojuegosdb.modelo.Consola;
+import videojuegosdb.modelo.Updater;
 
 /**
  * Controlador para la ventana de Consola.
@@ -22,9 +25,9 @@ public class ConsolaController implements Initializable {
     private Label nombre;
     @FXML
     private Hyperlink compania;
-    @FXML 
+    @FXML
     private Label anio;
-    
+
     private static Consola actual = null;
 
     /**
@@ -44,23 +47,23 @@ public class ConsolaController implements Initializable {
             anio.setText(actual.getAnio().toString());
         } catch (SQLException e) {
             System.err.println("Error en el método ConsolaController.initialize"
-                    + "(URL, ResourceBudle): " + e.getClass().getName() + ": " 
+                    + "(URL, ResourceBudle): " + e.getClass().getName() + ": "
                     + e.getMessage());
             System.exit(0);
         }
     }
 
     /* Establece el texto del Hyperlink de la compañía. */
-    private void setCompania() throws SQLException{
+    private void setCompania() throws SQLException {
         String c = actual.getCompania();
-        if (c == null){
+        if (c == null) {
             compania.setVisible(false);
             return;
         }
         compania.setVisible(true);
         compania.setText(c);
     }
-    
+
     /**
      * Regresa la Consola actual.
      *
@@ -78,7 +81,7 @@ public class ConsolaController implements Initializable {
     public static void setConsola(Consola nueva) {
         actual = nueva;
     }
-    
+
     /**
      * Manejador para el botón de eliminar.
      */
@@ -87,7 +90,7 @@ public class ConsolaController implements Initializable {
         VideojuegosDBMain.getInstance().showEliminaScene(actual.getNombre(),
                 "Consola");
     }
-    
+
     /**
      * Manejador para el botón de regresar.
      */
@@ -95,13 +98,27 @@ public class ConsolaController implements Initializable {
     protected void handleBotonRegresa() {
         VideojuegosDBMain.getInstance().gotoPreviousScene();
     }
-    
+
     /**
-     * Manejador para el botón de juegos.
+     * Manejador para el botón home.
      */
     @FXML
-    protected void handleBotonJuegos(){
-        
+    protected void handleBotonHome() {
+        VideojuegosDBMain.getInstance().gotoMain();
+    }
+
+    /**
+     * Manejador para el botón de juegos.
+     *
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * escena.
+     */
+    @FXML
+    protected void handleBotonJuegos() throws IOException {
+        Integer id = Consola.getId(actual.getNombre());
+        String l = "SELECT * FROM salio_para WHERE id_consola"
+                + " = " + id + ";";
+        VideojuegosDBMain.getInstance().gotoLanzamientoTabla(l);
     }
 
 }

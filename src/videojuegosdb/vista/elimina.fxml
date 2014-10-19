@@ -15,7 +15,7 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
-      <Button layoutX="305.0" layoutY="155.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" text="No">
+      <Button layoutX="305.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleBotonNo" prefHeight="40.0" prefWidth="120.0" text="No">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>

@@ -50,7 +50,7 @@
             <Image url="@imagenes/back_arrow.png" />
          </image>
       </ImageView>
-      <Button fx:id="handleBotonJuegos" layoutX="42.0" layoutY="322.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="150.0" text="Juegos">
+      <Button layoutX="42.0" layoutY="322.0" mnemonicParsing="false" onAction="#handleBotonJuegos" prefHeight="71.0" prefWidth="150.0" text="Juegos">
          <font>
             <Font size="26.0" />
          </font>
@@ -58,6 +58,16 @@
       <ImageView fitHeight="77.0" fitWidth="92.0" layoutX="214.0" layoutY="322.0">
          <image>
             <Image url="@imagenes/controller.png" />
+         </image>
+      </ImageView>
+      <Button alignment="BASELINE_LEFT" layoutX="545.0" layoutY="534.0" mnemonicParsing="false" onAction="#handleBotonHome" prefHeight="39.0" prefWidth="70.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <ImageView disable="true" fitHeight="39.0" fitWidth="43.0" layoutX="559.0" layoutY="535.0">
+         <image>
+            <Image url="@imagenes/home.png" />
          </image>
       </ImageView>
    </children>
