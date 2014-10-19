@@ -20,12 +20,12 @@
             <Font name="Liberation Mono" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="87.0" text="Compañia:">
+      <Label layoutX="42.0" layoutY="87.0" text="Compañía:">
          <font>
             <Font name="Liberation Mono" size="23.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="compania" layoutX="331.0" layoutY="87.0" text="Hyperlink">
+      <Hyperlink fx:id="compania" layoutX="363.0" layoutY="87.0" onAction="#handleHyperlinkCompania" text="Hyperlink">
          <font>
             <Font name="Liberation Mono" size="23.0" />
          </font>

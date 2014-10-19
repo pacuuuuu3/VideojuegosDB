@@ -3,15 +3,14 @@ package videojuegosdb.controlador;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import videojuegosdb.modelo.Compania;
 import videojuegosdb.modelo.Consola;
-import videojuegosdb.modelo.Updater;
 
 /**
  * Controlador para la ventana de Consola.
@@ -119,6 +118,20 @@ public class ConsolaController implements Initializable {
         String l = "SELECT * FROM salio_para WHERE id_consola"
                 + " = " + id + ";";
         VideojuegosDBMain.getInstance().gotoLanzamientoTabla(l);
+    }
+
+    /**
+     * Manejador para el Hyperlink de la Compania.
+     *
+     * @throws java.sql.SQLException Si ocurre un error con la base de datos.
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * escena.
+     */
+    @FXML
+    protected void handleHyperlinkCompania() throws SQLException, IOException {
+        Integer idCompania = Compania.getId(actual.getCompania());
+        Compania com = Compania.getCompania(idCompania);
+        VideojuegosDBMain.getInstance().gotoCompania(com);
     }
 
 }

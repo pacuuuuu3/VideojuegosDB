@@ -79,7 +79,7 @@ public class Compania {
             }
             return id;
         } catch (Exception e) {
-            System.err.println("Error en el método Compania.getId(String): " 
+            System.err.println("Error en el método Compania.getId(String): "
                     + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
@@ -112,6 +112,16 @@ public class Compania {
             System.exit(0);
         }
         return null;
+    }
+
+    /**
+     * Elimina la compañía de la base de datos.
+     */
+    public void remove() {
+        Integer id = Compania.getId(this.nombre);
+        Updater.update("DELETE FROM publico_consola WHERE id_compania = " + id
+                + ";");
+        Updater.update("DELETE FROM compania WHERE id = " + id + ";");
     }
 
 }

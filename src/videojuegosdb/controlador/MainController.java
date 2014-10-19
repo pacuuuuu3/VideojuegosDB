@@ -91,6 +91,7 @@ public class MainController implements Initializable {
                         if (event.getClickCount() > 1) {
                             try {
                                 Lanzamiento l = (Lanzamiento) cell.getTableRow().getItem();
+                                if(l == null) return;
                                 VideojuegosDBMain.getInstance().gotoLanzamiento(l);
                             } catch (IOException e) {
                                 System.err.println("Error en el método "

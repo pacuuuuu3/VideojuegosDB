@@ -36,4 +36,11 @@ public class TestConsola {
     public void testGetCompania(){
     
     }
+    
+    /**
+     * Prueba unitaria para el método remove.
+     */
+    @Test public void testRemove(){
+        
+    }
 }

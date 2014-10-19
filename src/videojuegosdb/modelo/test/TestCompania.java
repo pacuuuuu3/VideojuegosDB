@@ -21,10 +21,17 @@ public class TestCompania {
     }
     
     /**
-     * Prueba unitaria para el método getCompania().
+     * Prueba unitaria para el método getCompania.
      */
     @Test
     public void testGetCompania(){
     
+    }
+    
+    /**
+     * Prueba unitaria para el método remove.
+     */
+    @Test
+    public void testRemove(){
     }
 }

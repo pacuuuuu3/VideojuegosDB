@@ -3,6 +3,7 @@ package videojuegosdb.modelo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Clase para representar una consola en la base de datos.
@@ -129,6 +130,24 @@ public class Consola {
             System.exit(0);
         }
         return null;
+    }
+
+    /**
+     * Elimina la consola de la base de datos.
+     *
+     * @throws java.sql.SQLException Si falla la conexión a la base de datos.
+     */
+    public void remove() throws SQLException {
+        Integer conId = Consola.getId(this.nombre);
+        ResultSet lanzamientosConsola = Updater.search("SELECT * FROM "
+                + "salio_para WHERE id_consola = " + conId + ";");
+        List<Lanzamiento> aEliminar = Lanzamiento.getLanzamientos(lanzamientosConsola);
+        for (Lanzamiento l : aEliminar) {
+            l.remove();
+        }
+        Updater.update("DELETE FROM consola WHERE id = " + conId + ";");
+        Updater.update("DELETE FROM publico_consola WHERE id_consola = "
+                + conId + ";");
     }
 
 }
