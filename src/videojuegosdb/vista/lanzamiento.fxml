@@ -41,17 +41,17 @@
          </font>
       </Label>
       <ImageView fx:id="clasificacion" fitHeight="116.0" fitWidth="111.0" layoutX="60.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true" />
-      <Hyperlink fx:id="consola" layoutX="330.0" layoutY="110.0" text="Hyperlink">
+      <Hyperlink fx:id="consola" layoutX="330.0" layoutY="110.0" onAction="#handleHyperlinkConsola" text="Hyperlink">
          <font>
             <Font name="Liberation Mono" size="23.0" />
          </font>
       </Hyperlink>
-      <Hyperlink fx:id="compania" layoutX="330.0" layoutY="150.0" text="Hyperlink">
+      <Hyperlink fx:id="compania" layoutX="330.0" layoutY="150.0" onAction="#handleHyperlinkCompania" text="Hyperlink">
          <font>
             <Font name="Liberation Mono" size="23.0" />
          </font>
       </Hyperlink>
-      <Hyperlink fx:id="desarrollador" layoutX="330.0" layoutY="190.0" text="Hyperlink">
+      <Hyperlink fx:id="desarrollador" layoutX="330.0" layoutY="190.0" onAction="#handleHyperlinkDesarrollador" text="Hyperlink">
          <font>
             <Font name="Liberation Mono" size="23.0" />
          </font>
@@ -71,7 +71,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="692.0" layoutY="552.0">
+      <ImageView disable="true" fitHeight="29.0" fitWidth="33.0" layoutX="690.0" layoutY="548.0">
          <image>
             <Image url="@imagenes/back_arrow.png" />
          </image>
@@ -81,5 +81,15 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
+      <Button alignment="BASELINE_LEFT" layoutX="531.0" layoutY="543.0" mnemonicParsing="false" onAction="#handleBotonHome" prefHeight="39.0" prefWidth="70.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <ImageView disable="true" fitHeight="39.0" fitWidth="41.0" layoutX="546.0" layoutY="543.0">
+         <image>
+            <Image url="@imagenes/home.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

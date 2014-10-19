@@ -23,12 +23,12 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="58.0" layoutY="164.0">
+      <ImageView disable="true" fitHeight="23.0" fitWidth="23.0" layoutX="58.0" layoutY="164.0">
          <image>
             <Image url="@imagenes/danger.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="142.0" layoutY="164.0">
+      <ImageView disable="true" fitHeight="23.0" fitWidth="23.0" layoutX="142.0" layoutY="164.0">
          <image>
             <Image url="@imagenes/danger.png" />
          </image>

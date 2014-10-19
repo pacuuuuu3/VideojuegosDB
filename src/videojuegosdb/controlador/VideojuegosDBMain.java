@@ -8,6 +8,8 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import videojuegosdb.modelo.Compania;
+import videojuegosdb.modelo.Consola;
 import videojuegosdb.modelo.Lanzamiento;
 
 /**
@@ -20,6 +22,7 @@ public class VideojuegosDBMain extends Application {
 
     private Stage stage;
 
+    private static boolean deRegreso = false;
     private static VideojuegosDBMain instance;
     private static String previousSceneName;
     private static String currentSceneName = null;
@@ -83,17 +86,34 @@ public class VideojuegosDBMain extends Application {
      * Cambia la escena por la ventana del lanzamiento dado.
      *
      * @param l - El lanzamiento sobre el cual se mostrará la ventana.
+     * @throws java.io.IOException Si hay un error al cargar lanzamiento.fxml.
      */
-    public void gotoLanzamiento(Lanzamiento l) {
-        try {
-            LanzamientoController.setLanzamiento(l);
-            replaceSceneContent("lanzamiento.fxml");
-        } catch (Exception e) {
-            System.err.println("Error en el método "
-                    + "VideojuegosDBMain.gotoLanzamiento(): "
-                    + e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
-        }
+    public void gotoLanzamiento(Lanzamiento l) throws IOException {
+        LanzamientoController.setLanzamiento(l);
+        replaceSceneContent("lanzamiento.fxml");
+    }
+
+    /**
+     * Cambia la escena a la ventana de la Consola dada.
+     *
+     * @param c - La Consola de la cual se mostrará la ventana.
+     * @throws java.io.IOException Si hay un error al acceder a consola.fxml.
+     */
+    public void gotoConsola(Consola c) throws IOException {
+        ConsolaController.setConsola(c);
+        replaceSceneContent("consola.fxml");
+    }
+
+    /**
+     * Cambia la escena por la de la Compania dada.
+     *
+     * @param c - La Compania a mostrar en pantalla.
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * escena.
+     */
+    public void gotoCompania(Compania c) throws IOException {
+        CompaniaController.setCompania(c);
+        replaceSceneContent("compania.fxml");
     }
 
     /**
@@ -101,6 +121,7 @@ public class VideojuegosDBMain extends Application {
      */
     public void gotoPreviousScene() {
         try {
+            deRegreso = true;
             replaceSceneContent(previousSceneName);
         } catch (Exception e) {
             System.err.println("Error en el método "

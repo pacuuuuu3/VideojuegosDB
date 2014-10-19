@@ -22,10 +22,18 @@ public class TestConsola {
     }
 
     /**
-     * Prueba unitaria para el método getConsola().
+     * Prueba unitaria para el método getConsola.
      */
     @Test
     public void testGetConsola() {
 
+    }
+    
+    /**
+     * Prueba unitaria para el método getCompania.
+     */
+    @Test
+    public void testGetCompania(){
+    
     }
 }

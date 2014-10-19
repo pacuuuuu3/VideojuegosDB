@@ -2,6 +2,7 @@
 package videojuegosdb.modelo;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Clase para representar una consola en la base de datos.
@@ -62,6 +63,24 @@ public class Consola {
     }
 
     /**
+     * Regresa la compañía que publicó la consola.
+     *
+     * @return El nombre de la compañía que publicó la consola.
+     * @throws java.sql.SQLException Si falla la conexión con la base de datos.
+     */
+    public String getCompania() throws SQLException {
+        String regreso = null;
+        Integer id = getId(this.nombre);
+        ResultSet companias = Updater.search("SELECT id_compania FROM "
+                + "publico_consola WHERE id_consola = " + id + ";");
+        if (companias.next()) {
+            id = companias.getInt("id_compania");
+            regreso = Compania.getCompania(id).getNombre();
+        }
+        return regreso;
+    }
+
+    /**
      * Regresa el id de la consola con nombre nombre.
      *
      * @param nombre - El nombre de la consola.
@@ -77,7 +96,7 @@ public class Consola {
             }
             return id;
         } catch (Exception e) {
-            System.err.println("Error en el método Consola.getId(String): " 
+            System.err.println("Error en el método Consola.getId(String): "
                     + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
@@ -105,7 +124,7 @@ public class Consola {
             return c;
         } catch (Exception e) {
             System.err.println("Error en el método "
-                    + "Consola.getConsola(Integer): " 
+                    + "Consola.getConsola(Integer): "
                     + e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
