@@ -2,6 +2,7 @@
 package videojuegosdb.modelo.test;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import org.junit.Assert;
 import org.junit.Test;
 import videojuegosdb.modelo.*;
@@ -16,19 +17,14 @@ public class TestConexion {
 
     /**
      * Prueba que la conexión se obtenga correctamente.
+     *
+     * @throws java.sql.SQLException Si falla la conexión a la base de datos.
      */
     @Test
-    public void testGetConexion() {
-        try {
-            Conexion.setNombreDB("test.db");
-            Connection c = Conexion.getConexion();
-            Assert.assertTrue(c.isValid(0));
-            c.close();
-        } catch (Exception e) {
-           System.err.println("Error en el método "
-                   + "TestConexion.testGetConexion(): " 
-                   + e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
-        }
+    public void testGetConexion() throws SQLException {
+        Conexion.setNombreDB("test.db");
+        Connection c = Conexion.getConexion();
+        Assert.assertTrue(c.isValid(100));
+        c.close();
     }
 }

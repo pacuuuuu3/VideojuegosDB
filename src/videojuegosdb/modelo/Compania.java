@@ -119,8 +119,10 @@ public class Compania {
 
     /**
      * Elimina la compañía de la base de datos.
+     *
+     * @throws java.sql.SQLException Si ocurre un error con la base de datos.
      */
-    public void remove() {
+    public void remove() throws SQLException {
         Integer id = Compania.getId(this.nombre);
         Updater.update("DELETE FROM publico_consola WHERE id_compania = " + id
                 + ";");

@@ -2,6 +2,7 @@
 package videojuegosdb.modelo;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Abstrae la información de un videojuego.
@@ -89,8 +90,9 @@ public class Videojuego {
 
     /**
      * Agrega el juego a la base de datos.
+     * @throws java.sql.SQLException Si ocurre un error con la base de datos.
      */
-    public void agregaJuego() {
+    public void agregaJuego() throws SQLException {
         String agrega = "INSERT INTO videojuego (nombre) VALUES (\""
                 + this.nombre + "\");";
         Updater.update(agrega);

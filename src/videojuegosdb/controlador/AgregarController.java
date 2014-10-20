@@ -97,90 +97,100 @@ public class AgregarController implements Initializable {
      */
     @FXML
     protected void handleBotonAgregarConsola() throws IOException {
-        error_consola.setVisible(false);
-        String nombre = nombre_consola.getText();
-        String compania = compania_consola.getValue();
-        Integer anio;
         try {
-            anio = Integer.parseInt(anio_consola.getText());
-        } catch (NumberFormatException e) {
-            anio = null;
+            error_consola.setVisible(false);
+            String nombre = nombre_consola.getText();
+            String compania = compania_consola.getValue();
+            Integer anio;
+            try {
+                anio = Integer.parseInt(anio_consola.getText());
+            } catch (NumberFormatException e) {
+                anio = null;
+            }
+            if (nombre.isEmpty()) {
+                error_consola.setText("Por favor escriba un nombre");
+                error_consola.setVisible(true);
+                return;
+            }
+            boolean companiaNull = (compania == null);
+            boolean anioNull = (anio == null);
+            String sql = "INSERT INTO consola (nombre";
+            if (!anioNull) {
+                sql += ", anio";
+            }
+            sql += ") VALUES (";
+            sql += "\"" + nombre + "\"";
+            if (!anioNull) {
+                sql += ", " + anio;
+            }
+            sql += ");";
+            Updater.update(sql);
+            if (!companiaNull) {
+                Updater.update("INSERT INTO publico_consola (id_consola,"
+                        + " id_compania) VALUES (" + Consola.getId(nombre) + ", "
+                        + Compania.getId(compania) + ");");
+            }
+            VideojuegosDBMain.getInstance().showSuccess();
+        } catch (SQLException e) {
+            if (e.getMessage().contains("UNIQUE constraint failed")) {
+                error_consola.setText("¡Esa consola ya existe!");
+                error_consola.setVisible(true);
+            }
         }
-        if (nombre.isEmpty()) {
-            error_consola.setText("Por favor escriba un nombre");
-            error_consola.setVisible(true);
-            return;
-        }
-        boolean companiaNull = (compania == null);
-        boolean anioNull = (anio == null);
-        String sql = "INSERT INTO consola (nombre";
-        if (!anioNull) {
-            sql += ", anio";
-        }
-        sql += ") VALUES (";
-        sql += "\"" + nombre + "\"";
-        if (!anioNull) {
-            sql += ", " + anio;
-        }
-        sql += ");";
-        Updater.update(sql);
-        if (!companiaNull) {
-            Updater.update("INSERT INTO publico_consola (id_consola,"
-                    + " id_compania) VALUES (" + Consola.getId(nombre) + ", "
-                    + Compania.getId(compania) + ");");
-        }
-        VideojuegosDBMain.getInstance().showSuccess();
     }
 
     /**
      * Manejador para el botón de agregar compañía.
+     *
+     * @throws java.io.IOException Si ocurre un error al intentar mostrar la
+     * ventana de éxito.
      */
     @FXML
-    protected void handleBotonAgregarCompania() {
-        error_compania.setVisible(false);
-        String nombre = nombre_consola.getText();
-        String compania = compania_consola.getValue();
-        Integer anio;
+    protected void handleBotonAgregarCompania() throws IOException {
         try {
-            anio = Integer.parseInt(anio_consola.getText());
-        } catch (NumberFormatException e) {
-            anio = null;
+            error_compania.setVisible(false);
+            String nombre = nombre_compania.getText();
+            Integer anio;
+            try {
+                anio = Integer.parseInt(anio_compania.getText());
+            } catch (NumberFormatException e) {
+                anio = null;
+            }
+            if (nombre.isEmpty()) {
+                error_compania.setText("Por favor escriba un nombre");
+                error_compania.setVisible(true);
+                return;
+            }
+            boolean anioNull = (anio == null);
+            String sql = "INSERT INTO compania (nombre";
+            if (!anioNull) {
+                sql += ", anio_fundacion";
+            }
+            sql += ") VALUES (";
+            sql += "\"" + nombre + "\"";
+            if (!anioNull) {
+                sql += ", " + anio;
+            }
+            sql += ");";
+            Updater.update(sql);
+            VideojuegosDBMain.getInstance().showSuccess();
+        } catch (SQLException e) {
+            if (e.getMessage().contains("UNIQUE constraint failed")) {
+                error_compania.setText("¡Esa compañía ya existe!");
+                error_compania.setVisible(true);
+            }
         }
-        if (nombre.isEmpty()) {
-            error_consola.setText("Por favor escriba un nombre");
-            error_consola.setVisible(true);
-            return;
-        }
-        boolean companiaNull = (compania == null);
-        boolean anioNull = (anio == null);
-        String sql = "INSERT INTO consola (nombre";
-        if (!anioNull) {
-            sql += ", anio";
-        }
-        sql += ") VALUES (";
-        sql += "\"" + nombre + "\"";
-        if (!anioNull) {
-            sql += ", " + anio;
-        }
-        sql += ");";
-        Updater.update(sql);
-        if (!companiaNull) {
-            Updater.update("INSERT INTO publico_consola (id_consola,"
-                    + " id_compania) VALUES (" + Consola.getId(nombre) + ", "
-                    + Compania.getId(compania) + ");");
-        }
-        VideojuegosDBMain.getInstance().showSuccess();
     }
-}
 
-/**
- * Manejador para el botón de agregar juego.
- *
- * @throws java.io.IOException Si ocurre un error al llamar a la ventana de
- * éxito.
- */
-@FXML
-        protected void handleBotonAgregarJuego() throws IOException {
+    /**
+     * Manejador para el botón de agregar juego.
+     *
+     * @throws java.io.IOException Si ocurre un error al llamar a la ventana de
+     * éxito.
+     * @throws java.sql.SQLException Si ocurre un error con la base de datos.
+     */
+    @FXML
+    protected void handleBotonAgregarJuego() throws IOException, SQLException {
         error_juego.setVisible(false);
         Integer juegoExistente;
         String nombre = nombre_juego.getText();
@@ -259,7 +269,7 @@ public class AgregarController implements Initializable {
      * Manejador para el botón home.
      */
     @FXML
-        protected void handleBotonHome() {
+    protected void handleBotonHome() {
         VideojuegosDBMain.getInstance().gotoMain();
     }
 }

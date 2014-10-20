@@ -36,16 +36,11 @@ public class Updater {
      * Actualiza la base de datos.
      *
      * @param update - La actualización a realizar.
+     * @throws java.sql.SQLException Si ocurre un error con la base de datos.
      */
-    public static void update(String update) {
-        try {
+    public static void update(String update) throws SQLException {
             initializeStatement();
             stmt.executeUpdate(update);
-        } catch (Exception e) {
-            System.err.println("Error en el método Updater.update(String): " 
-                    + e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
-        }
     }
 
     /* Inicializa el Statement de la clase. */
