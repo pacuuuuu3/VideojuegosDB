@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -18,6 +19,16 @@
                         <Font size="31.0" />
                      </font>
                   </Label>
+                  <Button alignment="BASELINE_LEFT" layoutX="707.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleBotonHome" prefHeight="39.0" prefWidth="70.0">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <ImageView disable="true" fitHeight="39.0" fitWidth="41.0" layoutX="721.0" layoutY="4.0">
+                     <image>
+                        <Image url="@imagenes/home.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

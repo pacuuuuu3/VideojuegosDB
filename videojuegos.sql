@@ -6,7 +6,7 @@ nombre             TEXT UNIQUE NOT NULL
 CREATE TABLE consola(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 nombre             TEXT UNIQUE NOT NULL,
-anio               INTEGER NOT NULL
+anio               INTEGER 
 );
 
 CREATE TABLE compania(
@@ -21,7 +21,7 @@ id_juego           INTEGER NOT NULL,
 id_consola         INTEGER NOT NULL,
 id_compania        INTEGER,
 id_desarrollador   INTEGER,
-anio               INTEGER NOT NULL,
+anio               INTEGER,
 clasificacion      TEXT,
 calificacion       INTEGER
 );

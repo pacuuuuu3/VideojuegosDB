@@ -58,10 +58,10 @@ public class EliminaController implements Initializable {
                 LanzamientoController.getLanzamiento().remove();
                 break;
             case "Compania":
-             CompaniaController.getCompania().remove();
-             break;
-             case "Consola":
-             ConsolaController.getConsola().remove();
+                CompaniaController.getCompania().remove();
+                break;
+            case "Consola":
+                ConsolaController.getConsola().remove();
         }
     }
 

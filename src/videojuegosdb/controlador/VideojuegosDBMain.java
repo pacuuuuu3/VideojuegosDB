@@ -208,6 +208,20 @@ public class VideojuegosDBMain extends Application {
         }
     }
 
+    /**
+     * Muestra la ventana de éxito al agregar.
+     *
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * escena.
+     */
+    public void showSuccess() throws IOException {
+        Parent root = FXMLLoader.load(VideojuegosDBMain.class.getResource("/videojuegosdb/vista/exito_agrega.fxml"));
+        Stage teatro = new Stage();
+        teatro.setTitle("Éxito");
+        teatro.setScene(new Scene(root, 500, 230));
+        teatro.show();
+    }
+
     /* Cambia el contenido de la escena por el del fxml dado. */
     private Parent replaceSceneContent(String fxml) throws IOException {
         previousSceneName = escenaActual;

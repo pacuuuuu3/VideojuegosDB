@@ -250,4 +250,12 @@ public class BusquedaController implements Initializable {
         CompaniaTablaController.setTable("compania");
         VideojuegosDBMain.getInstance().gotoCompaniasTabla(sql);
     }
+
+    /**
+     * Manejador para el botón home.
+     */
+    @FXML
+    protected void handleBotonHome() {
+        VideojuegosDBMain.getInstance().gotoMain();
+    }
 }

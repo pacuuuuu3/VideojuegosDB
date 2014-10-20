@@ -68,7 +68,11 @@ public class LanzamientoController implements Initializable {
             desarrollador.setVisible(true);
             desarrollador.setText(dev);
         }
-        anio.setText(actual.getAnio().toString());
+        Integer y = actual.getAnio();
+        if (y != 0) {
+            anio.setText(y.toString());
+        }else
+            anio.setVisible(false);
     }
 
     /* Elige la imagen para la clasificación del juego. */
