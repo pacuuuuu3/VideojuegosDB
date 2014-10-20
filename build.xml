@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="videojuegosdb" default="videojuegosdb.jar" basedir="."
-	 xmlns:fx="javafx:com.sun.javafx.tools.ant">
+<project name="videojuegosdb" default="videojuegosdb.jar" basedir="." >
   
   <property name="build.dir" value="build" />
   <property name="src.dir"   value="src" />
   <property name="lib.dir"   value="lib" />
   <property name="doc.dir"   value="doc" />
-
-<target name="videojuegosdb.jar" depends="compile">
-    <taskdef uri="javafx:com.sun.javafx.tools.ant" classpath="${javafx.lib.ant-javafx.jar}"/>
-    <fx:jar destfile="/videojuegosdb.jar">
-      <fx:application name="VideojuegoDB"
-		      mainClass="/src/videojuegosdb/controlador/VideojuegosDBMain"/>
-      <fx:resources>
-        <fx:fileset dir="${build.dir}" includes="${lib.dir}/*"/>
-      </fx:resources>
-    </fx:jar> 
-</target>        
+  
+  <target name="videojuegosdb.jar" depends="compile">
+    <jar jarfile="videojuegosdb.jar">
+      <zipfileset dir="${build.dir}" prefix="" />
+      <manifest>
+        <attribute name="Main-Class" value="/src/videojuegosdb/controlador/VideojuegosDBMain"/>
+      </manifest>
+    </jar>
+  </target>
   
   <target name="compile">
     <mkdir dir="${build.dir}"/>
