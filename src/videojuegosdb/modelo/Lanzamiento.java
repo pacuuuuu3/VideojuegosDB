@@ -24,6 +24,9 @@ public class Lanzamiento {
     private String clasificacion;
     private Integer calificacion;
 
+    private static List<String> clasificaciones = null;
+    private static List<Integer> calificaciones = null;
+
     /**
      * Constructor vacío
      */
@@ -54,20 +57,22 @@ public class Lanzamiento {
         this.clasificacion = clasificacion;
         this.calificacion = calificacion;
     }
-    
+
     /**
      * Regresa el id en la tabla del Lanzamiento.
+     *
      * @return El id del lanzamiento.
      */
-    public Integer getRowid(){
+    public Integer getRowid() {
         return this.rowid;
     }
-    
+
     /**
      * Actualiza el valor del id en la tabla del Lanzamiento.
+     *
      * @param rowid - El nuevo valor del id.
      */
-    public void setRowid(Integer rowid){
+    public void setRowid(Integer rowid) {
         this.rowid = rowid;
     }
 
@@ -271,6 +276,7 @@ public class Lanzamiento {
 
     /**
      * Elimina el lanzamiento de la base de datos.
+     *
      * @throws java.sql.SQLException Si falla la conexión a la base de datos.
      */
     public void remove() throws SQLException {
@@ -278,9 +284,46 @@ public class Lanzamiento {
         Updater.update("DELETE FROM salio_para WHERE rowid = " + rowid + ";");
         ResultSet cuantosHay = Updater.search("SELECT * FROM salio_para WHERE "
                 + "id_juego = " + idJuego + ";");
-        if(cuantosHay.next())
+        if (cuantosHay.next()) {
             return;
+        }
         Updater.update("DELETE FROM videojuego WHERE id = " + idJuego + ";");
+    }
+
+    /**
+     * Regresa una lista con las clasificaciones posibles.
+     *
+     * @return Una lista con las clasificaciones posibles.
+     */
+    public static List<String> getListaClasificaciones() {
+        if (clasificaciones == null) {
+            clasificaciones = new LinkedList<>();
+            clasificaciones.add("EC");
+            clasificaciones.add("K-A");
+            clasificaciones.add("E");
+            clasificaciones.add("E10+");
+            clasificaciones.add("T");
+            clasificaciones.add("M");
+            clasificaciones.add("AO");
+            clasificaciones.add("RP");
+        }
+        return clasificaciones;
+
+    }
+
+    /**
+     * Regresa una lista con todas las calificaciones posibles.
+     *
+     * @return Una lista con las calificaciones posibles.
+     */
+    public static List<Integer> getListaCalificaciones() {
+        if (calificaciones == null) {
+            calificaciones = new LinkedList<>();
+            for (int i = 1; i <= 100; ++i) {
+                calificaciones.add(i);
+            }
+        }
+        return calificaciones;
     }
 
 }

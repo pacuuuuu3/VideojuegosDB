@@ -57,32 +57,14 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Manejador para el Hyperlink de Juegos.
-     */
-    @FXML
-    protected void handleHyperlinkJuegos() {
-
-    }
-
-    /**
-     * Manejador para el Hyperlink de Consolas.
+     * Manejador para el Hyperlink de Buscar.
      *
-     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar de
      * escena.
      */
     @FXML
-    protected void handleHyperlinkConsolas() throws IOException {
-        ConsolaTablaController.setTable("consola");
-        VideojuegosDBMain.getInstance().gotoConsolasTabla("SELECT * FROM "
-                + "consola;");
-    }
-
-    /**
-     * Manejador para el Hyperlink de Compañías.
-     */
-    @FXML
-    protected void handleHyperlinkCompanias() {
-
+    protected void handleHyperlinkBuscar() throws IOException {
+        VideojuegosDBMain.getInstance().gotoBuscar();
     }
 
 

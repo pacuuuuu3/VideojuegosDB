@@ -1,11 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="videojuegosdb.controlador.BusquedaController">
-    
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="videojuegosdb.controlador.BusquedaController">
+   <children>
+      <SplitPane dividerPositions="0.08695652173913043" layoutX="258.0" layoutY="181.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="24.0" layoutY="3.0" text="Búsqueda">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.33" layoutX="85.0" layoutY="153.0" prefHeight="542.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Label layoutX="47.0" layoutY="16.0" text="Buscar Juego">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nombre_juego" layoutX="14.0" layoutY="70.0" prefHeight="25.0" prefWidth="236.0" promptText="Escriba el nombre del juego" />
+                              <ComboBox fx:id="consola_juego" layoutX="14.0" layoutY="110.0" prefHeight="25.0" prefWidth="236.0" promptText="Seleccione una consola" />
+                              <ComboBox fx:id="compania_juego" layoutX="14.0" layoutY="150.0" prefHeight="25.0" prefWidth="236.0" promptText="Seleccione una compañía" />
+                              <ComboBox fx:id="desarrollador_juego" layoutX="14.0" layoutY="190.0" prefHeight="25.0" prefWidth="236.0" promptText="Seleccione un desarrollador" />
+                              <TextField fx:id="anio_juego" layoutX="14.0" layoutY="230.0" prefHeight="25.0" prefWidth="236.0" promptText="Escriba el año de lanzamiento" />
+                              <ComboBox fx:id="clasificacion_juego" layoutX="14.0" layoutY="270.0" prefHeight="25.0" prefWidth="236.0" promptText="Seleccione una clasificación" />
+                              <ComboBox fx:id="calificacion_juego" layoutX="14.0" layoutY="310.0" prefHeight="25.0" prefWidth="236.0" promptText="Seleccione una calificación" />
+                              <Button layoutX="50.0" layoutY="383.0" mnemonicParsing="false" onAction="#handleBotonBuscarJuego" prefHeight="25.0" prefWidth="164.0" text="Buscar">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <SplitPane dividerPositions="0.5" layoutX="157.0" layoutY="97.0" prefHeight="540.0" prefWidth="555.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <Label layoutX="37.0" layoutY="16.0" text="Buscar Consola">
+                                             <font>
+                                                <Font size="25.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="nombre_consola" layoutX="10.0" layoutY="70.0" prefHeight="25.0" prefWidth="236.0" promptText="Escriba el nombre de la consola" />
+                                          <ComboBox fx:id="compania_consola" layoutX="10.0" layoutY="110.0" prefHeight="25.0" prefWidth="236.0" promptText="Seleccione una compañía" />
+                                          <TextField fx:id="anio_consola" layoutX="10.0" layoutY="150.0" prefHeight="25.0" prefWidth="236.0" promptText="Escriba el año de lanzamiento" />
+                                          <Button layoutX="47.0" layoutY="383.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Buscar">
+                                             <font>
+                                                <Font size="23.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <Label layoutX="17.0" layoutY="16.0" text="Buscar Compañía">
+                                             <font>
+                                                <Font size="25.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="nombre_compania" layoutX="9.0" layoutY="70.0" prefHeight="25.0" prefWidth="242.0" promptText="Escriba el nombre de la compañía" />
+                                          <TextField fx:id="anio_compania" layoutX="9.0" layoutY="110.0" prefHeight="25.0" prefWidth="242.0" promptText="Escriba el año de fundación" />
+                                          <Button layoutX="45.0" layoutY="383.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Buscar">
+                                             <font>
+                                                <Font size="23.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
 </AnchorPane>

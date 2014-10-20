@@ -155,6 +155,16 @@ public class VideojuegosDBMain extends Application {
     }
 
     /**
+     * Cambia la escena actual por la de búsqueda.
+     *
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar de
+     * escena.
+     */
+    public void gotoBuscar() throws IOException {
+        replaceSceneContent("busqueda.fxml");
+    }
+
+    /**
      * Muestra una escena para eliminar elementos de la base de datos.
      *
      * @param nombre - El nombre de la entrada a eliminar.

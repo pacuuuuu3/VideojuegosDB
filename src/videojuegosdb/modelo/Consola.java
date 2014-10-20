@@ -156,6 +156,7 @@ public class Consola {
      * obtenido de una consulta de SQLite.
      *
      * @param resultados - Un ResultSet formado por consolas.
+     * @param tabla - La tabla en la que se buscaron las consolas.
      * @return Una Lista con las consolas del ResultSet.
      */
     public static List<Consola> getConsolas(ResultSet resultados, String tabla) {
@@ -183,6 +184,22 @@ public class Consola {
             System.exit(0);
         }
         return null;
+    }
+
+    /**
+     * Regresa una lista con los nombres de todas las consolas de la base de
+     * datos.
+     *
+     * @return Una lista con los nombres de todas las consolas.
+     * @throws java.sql.SQLException Si falla la conexión con la base de datos.
+     */
+    public static List<String> getAll() throws SQLException {
+        List<String> s = new LinkedList<>();
+        ResultSet nombres = Updater.search("SELECT nombre FROM consola;");
+        while (nombres.next()) {
+            s.add(nombres.getString("nombre"));
+        }
+        return s;
     }
 
 }

@@ -51,4 +51,11 @@ public class TestConsola {
     @Test
     public void testGetConsolas() {
     }
+
+    /**
+     * Prueba unitaria para el método getAll.
+     */
+    @Test
+    public void testGetAll() {
+    }
 }

@@ -2,6 +2,9 @@
 package videojuegosdb.modelo;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Clase que modela una compañía en la base de datos.
@@ -124,4 +127,17 @@ public class Compania {
         Updater.update("DELETE FROM compania WHERE id = " + id + ";");
     }
 
+    /**
+     * Regresa una lista con los nombres de todas las compañías.
+     *
+     * @return Una lista con los nombres de todas la compañías.
+     */
+    public static List<String> getAll() throws SQLException {
+        List<String> s = new LinkedList<>();
+        ResultSet nombres = Updater.search("SELECT nombre FROM compania;");
+        while (nombres.next()) {
+            s.add(nombres.getString("nombre"));
+        }
+        return s;
+    }
 }
