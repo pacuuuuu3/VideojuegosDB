@@ -2,7 +2,6 @@
 package videojuegosdb.controlador;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
@@ -155,6 +154,18 @@ public class VideojuegosDBMain extends Application {
     }
 
     /**
+     * Cambia la pantalla a la de resultados de compañías.
+     *
+     * @param query - La consulta con los resultados a mostrarse en la tabla.
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * escena.
+     */
+    public void gotoCompaniasTabla(String query) throws IOException {
+        CompaniaTablaController.setCompanias(query);
+        replaceSceneContent("compania_tabla.fxml");
+    }
+
+    /**
      * Cambia la escena actual por la de búsqueda.
      *
      * @throws java.io.IOException Si ocurre un error al intentar cambiar de
@@ -162,6 +173,16 @@ public class VideojuegosDBMain extends Application {
      */
     public void gotoBuscar() throws IOException {
         replaceSceneContent("busqueda.fxml");
+    }
+
+    /**
+     * Cambia la escena actual por la ventana para agregar.
+     *
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar de
+     * escena.
+     */
+    public void gotoAgregar() throws IOException {
+        replaceSceneContent("agregar.fxml");
     }
 
     /**

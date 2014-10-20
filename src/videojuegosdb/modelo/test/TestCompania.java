@@ -43,4 +43,12 @@ public class TestCompania {
     public void testGetAll() {
 
     }
+    
+    /**
+     * Prueba unitaria para el método getCompanias.
+     */
+    @Test
+    public void testGetCompanias(){
+    
+    }
 }

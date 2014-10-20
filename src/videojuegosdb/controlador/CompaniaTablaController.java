@@ -1,7 +1,6 @@
-/* Controlador para la tabla de consolas. */
+/* Controlador para la tabla de compañías. */
 package videojuegosdb.controlador;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
@@ -14,25 +13,25 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
-import videojuegosdb.modelo.Consola;
+import videojuegosdb.modelo.Compania;
 import videojuegosdb.modelo.Updater;
 
 /**
- * Controlador para la tabla de Consolas.
+ * Controlador para la tabla de Companias.
  *
  * @author Víctor Zamora Gutiérrez
  * @version 1.0
  */
-public class ConsolaTablaController implements Initializable {
+public class CompaniaTablaController implements Initializable {
 
     @FXML
-    private TableView<Consola> tabla;
+    private TableView<Compania> tabla;
     @FXML
-    private TableColumn<Consola, String> columna_nombre;
+    private TableColumn<Compania, String> columna_nombre;
     @FXML
-    private TableColumn<Consola, String> columna_anio;
+    private TableColumn<Compania, String> columna_anio;
 
-    private static String consolas = null;
+    private static String companias = null;
     private static String table = null;
 
     /**
@@ -47,29 +46,29 @@ public class ConsolaTablaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        deployConsolaOnDoubleClick(columna_nombre);
-        ResultSet busqueda = Updater.search(consolas);
+        deployCompaniaOnDoubleClick(columna_nombre);
+        ResultSet busqueda = Updater.search(companias);
         columna_nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        columna_anio.setCellValueFactory(new PropertyValueFactory<>("anio"));
-        tabla.getItems().addAll(Consola.getConsolas(busqueda, table));
+        columna_anio.setCellValueFactory(new PropertyValueFactory<>("anioFundacion"));
+        tabla.getItems().addAll(Compania.getCompanias(busqueda, table));
     }
 
     /**
-     * Establece las consolas a mostrar.
+     * Establece las compañías a mostrar.
      *
      * @param c - Una consulta de SQLite con los resultados a mostrar.
      */
-    public static void setConsolas(String c) {
-        consolas = c;
+    public static void setCompanias(String c) {
+        companias = c;
     }
 
     /**
-     * Regresa las consolas a mostrar.
+     * Regresa las compañías a mostrar.
      *
      * @return Una consulta de SQLite con los resultados a mostrar.
      */
-    public static String getConsolas() {
-        return consolas;
+    public static String getCompanias() {
+        return companias;
     }
 
     /**
@@ -107,24 +106,24 @@ public class ConsolaTablaController implements Initializable {
     }
 
     /**
-     * Cambia la ventana de la interfaz a la de una consola al hacer doble
+     * Cambia la ventana de la interfaz a la de una compañía al hacer doble
      * click en la columna dada.
      *
      * @param nombre - El nombre de la columna a la cual ponerle la propiedad.
      */
-    public static void deployConsolaOnDoubleClick(TableColumn<Consola, String> nombre) {
-        nombre.setCellFactory(new Callback<TableColumn<Consola, String>, TableCell<Consola, String>>() {
+    public static void deployCompaniaOnDoubleClick(TableColumn<Compania, String> nombre) {
+        nombre.setCellFactory(new Callback<TableColumn<Compania, String>, TableCell<Compania, String>>() {
             @Override
-            public TableCell<Consola, String> call(TableColumn<Consola, String> col) {
-                final TableCell<Consola, String> cell = new TableCell<Consola, String>() {
+            public TableCell<Compania, String> call(TableColumn<Compania, String> col) {
+                final TableCell<Compania, String> cell = new TableCell<Compania, String>() {
                     @Override
-                    public void updateItem(String consola, boolean empty
+                    public void updateItem(String compania, boolean empty
                     ) {
-                        super.updateItem(consola, empty);
+                        super.updateItem(compania, empty);
                         if (empty) {
                             setText(null);
                         } else {
-                            setText(consola);
+                            setText(compania);
                         }
                     }
                 };
@@ -133,14 +132,14 @@ public class ConsolaTablaController implements Initializable {
                     public void handle(MouseEvent event) {
                         if (event.getClickCount() > 1) {
                             try {
-                                Consola l = (Consola) cell.getTableRow().getItem();
+                                Compania l = (Compania) cell.getTableRow().getItem();
                                 if (l == null) {
                                     return;
                                 }
-                                VideojuegosDBMain.getInstance().gotoConsola(l);
-                            } catch (IOException e) {
+                                VideojuegosDBMain.getInstance().gotoCompania(l);
+                            } catch (Exception e) {
                                 System.err.println("Error en el método "
-                                        + "ConsolaTablaController.deployConsolaOnDoubleClick(): "
+                                        + "CompaniaTablaController.deployCompaniaOnDoubleClick(): "
                                         + e.getClass().getName() + ": " + e.getMessage());
                                 System.exit(0);
                             }

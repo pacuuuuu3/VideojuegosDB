@@ -67,6 +67,17 @@ public class MainController implements Initializable {
         VideojuegosDBMain.getInstance().gotoBuscar();
     }
 
+    /**
+     * Manejador para el botón de agregar.
+     *
+     * @throws java.io.IOException Si ocurro un error al intentar cambiar de
+     * escena.
+     */
+    @FXML
+    protected void handleBotonAgregar() throws IOException {
+        VideojuegosDBMain.getInstance().gotoAgregar();
+    }
+
 
     /* Regresa un ResultSet con los 20 (o menos) mejores videojuegos para ponerlos en la 
      tabla principal. */

@@ -140,4 +140,30 @@ public class Compania {
         }
         return s;
     }
+
+    public static List<Compania> getCompanias(ResultSet resultados, String tabla) {
+        try {
+            List<Compania> regreso = new LinkedList<>();
+            if (tabla.equals("salio_para")) {
+                List<Integer> id = new LinkedList<>();
+                while (resultados.next()) {
+                    id.add(resultados.getInt("id_compania"));
+                }
+                for (Integer i : id) {
+                    regreso.add(Compania.getCompania(i));
+                }
+            } else if (tabla.equals("compania")) {
+                while (resultados.next()) {
+                    regreso.add(new Compania(resultados.getString("nombre"), resultados.getInt("anio_fundacion")));
+                }
+            }
+            return regreso;
+        } catch (Exception e) {
+            System.err.println("Error en el método "
+                    + "Compania.getCompanias(ResultSet): "
+                    + e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+        return null;
+    }
 }

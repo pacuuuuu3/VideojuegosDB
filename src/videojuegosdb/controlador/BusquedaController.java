@@ -149,7 +149,7 @@ public class BusquedaController implements Initializable {
             } else {
                 sql += "AND ";
             }
-            sql += "clasificacion = " + clasificacion + " ";
+            sql += "clasificacion = \"" + clasificacion + "\" ";
         }
         if (!(calificacion == null)) {
             if (first) {
@@ -164,6 +164,12 @@ public class BusquedaController implements Initializable {
         VideojuegosDBMain.getInstance().gotoLanzamientoTabla(sql);
     }
 
+    /**
+     * Manejador para el botón de buscar consola.
+     *
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * escena.
+     */
     @FXML
     protected void handleBotonBuscarConsola() throws IOException {
         String sql = "SELECT * FROM consola ";
@@ -181,7 +187,7 @@ public class BusquedaController implements Initializable {
                 first = false;
                 sql += "WHERE ";
             }
-            sql += "nombre LIKE " + nombre + " ";
+            sql += "nombre LIKE \"" + nombre + "\" ";
         }
         if (!(compania == null)) {
             if (first) {
@@ -203,6 +209,45 @@ public class BusquedaController implements Initializable {
             sql += "anio = " + anio + " ";
         }
         sql += ";";
+        ConsolaTablaController.setTable("consola");
         VideojuegosDBMain.getInstance().gotoConsolasTabla(sql);
+    }
+
+    /**
+     * Manejador para el botón de buscar consola.
+     *
+     * @throws java.io.IOException Si ocurre un error al intentar cambiar la
+     * escena.
+     */
+    @FXML
+    protected void handleBotonBuscarCompania() throws IOException {
+        String sql = "SELECT * FROM compania ";
+        String nombre = nombre_compania.getText();
+        Integer anio;
+        try {
+            anio = Integer.parseInt(anio_compania.getText());
+        } catch (NumberFormatException e) {
+            anio = null;
+        }
+        boolean first = true;
+        if (!nombre.isEmpty()) {
+            if (first) {
+                first = false;
+                sql += "WHERE ";
+            }
+            sql += "nombre LIKE \"" + nombre + "\" ";
+        }
+        if (!(anio == null)) {
+            if (first) {
+                first = false;
+                sql += "WHERE ";
+            } else {
+                sql += "AND ";
+            }
+            sql += "anio_fundacion = " + anio + " ";
+        }
+        sql += ";";
+        CompaniaTablaController.setTable("compania");
+        VideojuegosDBMain.getInstance().gotoCompaniasTabla(sql);
     }
 }

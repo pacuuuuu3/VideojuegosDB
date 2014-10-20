@@ -15,7 +15,7 @@
             <Font name="Liberation Mono" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="32.0" layoutY="79.0" text="Fecha de fundación:">
+      <Label layoutX="32.0" layoutY="79.0" text="Año de fundación:">
          <font>
             <Font name="Liberation Mono" size="23.0" />
          </font>
