@@ -10,7 +10,8 @@
     <jar jarfile="videojuegosdb.jar">
       <zipfileset dir="${build.dir}" prefix="" />
       <manifest>
-        <attribute name="Main-Class" value="/src/videojuegosdb/controlador/VideojuegosDBMain"/>
+	<attribute name="Class-Path" value="${lib.dir}/sqlite-jdbc-3.8.6.jar"/>
+          <attribute name="Main-Class" value="${src.dir}.videojuegosdb.controlador.VideojuegosDBMain"/>
       </manifest>
     </jar>
   </target>
@@ -27,17 +28,39 @@
       <classpath>
 	<fileset dir="${lib.dir}">
 	  <include name="*.jar"/>
+	  <include name="*.fxml"/>
+	  <include name="*.db"/>
 	</fileset>
       </classpath>
       <compilerarg value="-Xlint:unchecked"/>
     </javac>
+    <mkdir dir="${build.dir}/videojuegosdb/vista"/>
+    <copy todir="${build.dir}/videojuegosdb/vista">
+      <fileset dir="${src.dir}/videojuegosdb/vista"
+	       includes="**/*.fxml" />
+    </copy>
+    <mkdir dir="${build.dir}/videojuegosdb/controlador/clasificaciones"/>
+    <copy todir="${build.dir}/videojuegosdb/controlador/clasificaciones">
+      <fileset dir="${src.dir}/videojuegosdb/controlador/clasificaciones"
+	       includes="**/*.*" />
+    </copy>
+    <mkdir dir="${build.dir}/lib"/>
+    <copy todir="${build.dir}/lib">
+      <fileset dir="."
+	       includes="**/*.db" />
+    </copy>
+    <mkdir dir="${build.dir}/videojuegosdb/vista/imagenes"/>
+    <copy todir="${build.dir}/videojuegosdb/vista/imagenes">
+      <fileset dir="${src.dir}/videojuegosdb/vista/imagenes"
+	       includes="**/*.*" />
+    </copy>
   </target>
-
+  
    <target name="doc" depends="videojuegosdb.jar">
-    <mkdir dir="${doc.dir}"/>
-    <javadoc packagenames="videojuegosdb.*"
-             sourcepath="src"
-             defaultexcludes="yes"
+     <mkdir dir="${doc.dir}"/>
+     <javadoc packagenames="videojuegosdb.*"
+              sourcepath="src"
+              defaultexcludes="yes"
              destdir="${doc.dir}"
              author="false"
              version="false"
@@ -65,6 +88,7 @@
 	 <pathelement path="${build.dir}" />
 	 <pathelement location="${lib.dir}/junit.jar" />
 	 <pathelement location="${lib.dir}/hamcrest-core.jar" />
+	<pathelement location="lib/sqlite-jdbc-3.8.6.jar" />
        </classpath>
        <batchtest fork="yes">
 	 <fileset dir="${src.dir}">

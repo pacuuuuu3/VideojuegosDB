@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="230.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="videojuegosdb.controlador.EliminaController">
+   <children>
+      <Label fx:id="seguro" layoutX="69.0" layoutY="23.0" text="Seguro que desea eliminar The World God Only KNows?" />
+      <Button layoutX="51.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleBotonSi" prefHeight="40.0" prefWidth="120.0" text="Sí">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="305.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleBotonNo" prefHeight="40.0" prefWidth="120.0" text="No">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Label layoutX="132.0" layoutY="65.0" opacity="0.67" text="No podra recuperar la informacion" textFill="#4c0af2">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <ImageView disable="true" fitHeight="23.0" fitWidth="23.0" layoutX="58.0" layoutY="164.0">
+         <image>
+            <Image url="@imagenes/danger.png" />
+         </image>
+      </ImageView>
+      <ImageView disable="true" fitHeight="23.0" fitWidth="23.0" layoutX="142.0" layoutY="164.0">
+         <image>
+            <Image url="@imagenes/danger.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

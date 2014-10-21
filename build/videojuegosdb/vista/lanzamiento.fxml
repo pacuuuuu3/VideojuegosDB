@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="videojuegosdb.controlador.LanzamientoController">
+   <children>
+      <Label fx:id="nombre" layoutX="60.0" layoutY="29.0" text="Nombre">
+         <font>
+            <Font name="Liberation Mono" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="110.0" text="Consola:">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="150.0" text="Compañia:">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="190.0" text="Desarrollador:">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="230.0" text="Año:">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="270.0" text="Calificación:">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="clasificacion" fitHeight="116.0" fitWidth="111.0" layoutX="60.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true" />
+      <Hyperlink fx:id="consola" layoutX="330.0" layoutY="110.0" onAction="#handleHyperlinkConsola" text="Hyperlink">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="compania" layoutX="330.0" layoutY="150.0" onAction="#handleHyperlinkCompania" text="Hyperlink">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="desarrollador" layoutX="330.0" layoutY="190.0" onAction="#handleHyperlinkDesarrollador" text="Hyperlink">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Hyperlink>
+      <Label fx:id="anio" layoutX="370.0" layoutY="229.0" text="Label">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="calificacion" layoutX="370.0" layoutY="271.0" text="Label">
+         <font>
+            <Font name="Liberation Mono" size="23.0" />
+         </font>
+      </Label>
+      <Button alignment="BASELINE_LEFT" layoutX="622.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleBotonRegresa" prefHeight="39.0" prefWidth="125.0" text="Volver">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <ImageView disable="true" fitHeight="29.0" fitWidth="33.0" layoutX="691.0" layoutY="548.0">
+         <image>
+            <Image url="@imagenes/back_arrow.png" />
+         </image>
+      </ImageView>
+      <Button alignment="CENTER" layoutX="60.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleBotonElimina" prefHeight="39.0" prefWidth="125.0" style="-fx-background-color: red;" text="Eliminar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button alignment="BASELINE_LEFT" layoutX="531.0" layoutY="543.0" mnemonicParsing="false" onAction="#handleBotonHome" prefHeight="39.0" prefWidth="70.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <ImageView disable="true" fitHeight="39.0" fitWidth="41.0" layoutX="546.0" layoutY="543.0">
+         <image>
+            <Image url="@imagenes/home.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

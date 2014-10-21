@@ -133,6 +133,7 @@ public class Compania {
      * Regresa una lista con los nombres de todas las compañías.
      *
      * @return Una lista con los nombres de todas la compañías.
+     * @throws java.sql.SQLException Si ocurre un error con la base de datos.
      */
     public static List<String> getAll() throws SQLException {
         List<String> s = new LinkedList<>();
@@ -143,6 +144,13 @@ public class Compania {
         return s;
     }
 
+    /**
+     * Regresa una lista de las Companias que son resultado de una búsqueda.
+     * 
+     * @param resultados - El ResultSet con los resultados de la búsqueda.
+     * @param tabla - La tabla en la que se buscaron las compañías.
+     * @return Una lista con las Companias encontradas.
+     */
     public static List<Compania> getCompanias(ResultSet resultados, String tabla) {
         try {
             List<Compania> regreso = new LinkedList<>();

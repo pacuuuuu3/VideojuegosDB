@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="videojuegosdb.controlador.MainController">
+   <children>
+      <SplitPane dividerPositions="0.10033444816053512" layoutX="171.0" layoutY="36.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Button layoutX="652.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleBotonAgregar" text="Agregar">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.18090452261306533" layoutX="186.0" layoutY="138.0" prefHeight="534.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Hyperlink layoutX="11.0" layoutY="17.0" onAction="#handleHyperlinkBuscar" prefHeight="29.0" prefWidth="111.0" text="Buscar">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                              </Hyperlink>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="532.0" prefWidth="658.0">
+                           <children>
+                              <SplitPane dividerPositions="0.08113207547169811" layoutX="214.0" layoutY="60.0" orientation="VERTICAL" prefHeight="532.0" prefWidth="648.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="52.0" prefWidth="646.0">
+                                       <children>
+                                          <Label layoutX="10.0" layoutY="7.0" text="Mejores Juegos:">
+                                             <font>
+                                                <Font name="Liberation Mono Bold" size="21.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="453.0" prefWidth="646.0">
+                                       <children>
+                                          <TableView fx:id="tabla_top" layoutX="94.0" layoutY="50.0" prefHeight="483.0" prefWidth="646.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn fx:id="columna_nombre" prefWidth="232.0" text="Nombre" />
+                                              <TableColumn fx:id="columna_consola" prefWidth="118.0" text="Consola" />
+                                                <TableColumn fx:id="columna_compania" prefWidth="190.0" text="Compañía" />
+                                                <TableColumn fx:id="columna_calificacion" prefWidth="105.0" text="Calificación" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
