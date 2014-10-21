@@ -7,11 +7,10 @@
   <property name="doc.dir"   value="doc" />
   
   <target name="videojuegosdb.jar" depends="compile">
-    <jar jarfile="videojuegosdb.jar">
-      <zipfileset dir="${build.dir}" prefix="" />
+    <jar destfile="./videojuegosdb.jar" basedir="${build.dir}">
       <manifest>
-	<attribute name="Class-Path" value="${lib.dir}/sqlite-jdbc-3.8.6.jar"/>
-          <attribute name="Main-Class" value="${src.dir}.videojuegosdb.controlador.VideojuegosDBMain"/>
+	<attribute name="Class-Path" value="${lib.dir}/sqlite-jdbc-3.8.6.jar videojuegos.db"/>
+          <attribute name="Main-Class" value="videojuegosdb.controlador.VideojuegosDBMain"/>
       </manifest>
     </jar>
   </target>
@@ -44,10 +43,9 @@
       <fileset dir="${src.dir}/videojuegosdb/controlador/clasificaciones"
 	       includes="**/*.*" />
     </copy>
-    <mkdir dir="${build.dir}/lib"/>
-    <copy todir="${build.dir}/lib">
+    <copy todir="${build.dir}">
       <fileset dir="."
-	       includes="**/*.db" />
+	       includes="*.db" />
     </copy>
     <mkdir dir="${build.dir}/videojuegosdb/vista/imagenes"/>
     <copy todir="${build.dir}/videojuegosdb/vista/imagenes">

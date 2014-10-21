@@ -8,9 +8,7 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import videojuegosdb.modelo.Compania;
-import videojuegosdb.modelo.Consola;
-import videojuegosdb.modelo.Lanzamiento;
+import videojuegosdb.modelo.*;
 
 /**
  * Clase principal de los controladores de la interfaz gráfica.
@@ -51,7 +49,8 @@ public class VideojuegosDBMain extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("VideojuegosDB");
+	Conexion.setNombreDB("videojuegos.db");
+	primaryStage.setTitle("VideojuegosDB");
         stage = primaryStage;
         gotoMain();
         primaryStage.show();
