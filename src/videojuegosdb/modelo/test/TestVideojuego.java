@@ -57,9 +57,19 @@ public class TestVideojuego {
     
     /**
      * Prueba unitaria para el método agregaJuego.
+     * @throws java.sql.SQLException Si ocurre un error con la base de datos.
      */
     @Test
-    public void testAgregaJuego(){
-        
+    public void testAgregaJuego() throws SQLException{
+	Videojuego v = new Videojuego("hola");
+	Updater.update("DROP TABLE videojuego;");
+	String sql = "CREATE TABLE videojuego(\n" +  
+	    "id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+	    "nombre             TEXT UNIQUE NOT NULL\n" +
+	    ");"; 
+	Updater.update(sql);
+	v.agregaJuego();
+	ResultSet elJuego = Updater.search("SELECT * FROM videojuego WHERE nombre like \"hola\";");
+	Assert.assertTrue(elJuego.next());
     }
 }

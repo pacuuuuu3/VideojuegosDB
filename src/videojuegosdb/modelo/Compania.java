@@ -137,6 +137,7 @@ public class Compania {
      * Regresa una lista con los nombres de todas las compañías.
      *
      * @return Una lista con los nombres de todas la compañías.
+     * @throws java.sql.SQLException Si ocurre un error con la base de datos.
      */
     public static List<String> getAll() throws SQLException {
         List<String> s = new LinkedList<>();
